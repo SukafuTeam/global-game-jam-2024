@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://de6e3qad0wbyw"]
+
+[ext_resource type="Script" path="res://scripts/ui/circle_transition.gd" id="1_l7y5y"]
+[ext_resource type="Texture2D" uid="uid://br8hxbyxgafgb" path="res://images/ui/circle_transition.png" id="2_ew6kw"]
+
+[node name="CircleTransition" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_l7y5y")
+
+[node name="Circle" type="Sprite2D" parent="."]
+texture = ExtResource("2_ew6kw")
+
+[node name="Fade" type="ColorRect" parent="Circle"]
+offset_left = -470.0
+offset_top = -471.0
+offset_right = 455.0
+offset_bottom = 460.0
+color = Color(0, 0, 0, 1)
+
+[node name="Border" type="ColorRect" parent="Circle"]
+offset_left = 491.0
+offset_top = -7839.0
+offset_right = 103429.0
+offset_bottom = 7722.0
+color = Color(0, 0, 0, 1)
+
+[node name="Border2" type="ColorRect" parent="Circle"]
+offset_left = -103557.0
+offset_top = -7758.0
+offset_right = -455.0
+offset_bottom = 7803.0
+color = Color(0, 0, 0, 1)
+
+[node name="Border3" type="ColorRect" parent="Circle"]
+offset_left = -103871.0
+offset_top = -74356.0
+offset_right = 103842.0
+offset_bottom = -467.0
+color = Color(0, 0, 0, 1)
+
+[node name="Border4" type="ColorRect" parent="Circle"]
+offset_left = -104020.0
+offset_top = 497.0
+offset_right = 103974.0
+offset_bottom = 68232.0
+color = Color(0, 0, 0, 1)

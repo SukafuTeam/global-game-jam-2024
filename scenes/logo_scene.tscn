@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://bly610po3drif"]
+
+[ext_resource type="Script" path="res://scripts/scenes/logo_scene.gd" id="1_c4gl4"]
+[ext_resource type="Texture2D" uid="uid://de33dvu1kwfyc" path="res://images/ui/logo_aniversario.png" id="1_cjvao"]
+[ext_resource type="AudioStream" uid="uid://boh6e4vvqlr5b" path="res://sounds/sfx/Logo Sukafu.wav" id="3_i6ot3"]
+
+[node name="LogoScene" type="CanvasLayer"]
+script = ExtResource("1_c4gl4")
+logo_sound = ExtResource("3_i6ot3")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LogoImage" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -361.0
+offset_top = -361.0
+offset_right = 361.0
+offset_bottom = 361.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cjvao")
+expand_mode = 1
+stretch_mode = 5
