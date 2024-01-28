@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://ekk2e8bgjkga"]
+
+[ext_resource type="PackedScene" uid="uid://cikwsnyq8tae4" path="res://entities/weapons/sword_weapon.tscn" id="1_le7c3"]
+[ext_resource type="Script" path="res://scripts/data/weapon_data.gd" id="2_j3eku"]
+
+[resource]
+script = ExtResource("2_j3eku")
+damage = 2
+speed = 3
+entity = ExtResource("1_le7c3")
+spawn_offset = Vector2(2.08165e-12, -60)

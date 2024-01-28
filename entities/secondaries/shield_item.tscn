@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://br025l7m87lny"]
+
+[ext_resource type="Script" path="res://scripts/secondaries/shield_item.gd" id="1_jpvgh"]
+[ext_resource type="Texture2D" uid="uid://debbdt7pr6q4q" path="res://images/sprites/secundary/parry.png" id="1_o0put"]
+
+[node name="ShieldItem" type="Node2D"]
+script = ExtResource("1_jpvgh")
+
+[node name="BodyContainer" type="Node2D" parent="."]
+position = Vector2(1.55762e-12, -58)
+scale = Vector2(1, 1)
+
+[node name="Shield" type="Sprite2D" parent="BodyContainer"]
+z_index = 5
+position = Vector2(-1.55762e-12, 0)
+scale = Vector2(0.748263, 0.748263)
+texture = ExtResource("1_o0put")

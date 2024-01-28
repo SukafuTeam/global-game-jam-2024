@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfavjq6r0yfrn"]
+
+[ext_resource type="Script" path="res://scripts/secondaries/lure_container.gd" id="1_tk5fu"]
+[ext_resource type="PackedScene" uid="uid://bdhnfk60fqdmh" path="res://entities/secondaries/lure.tscn" id="2_ujjg4"]
+
+[node name="LureContainer" type="Node2D"]
+script = ExtResource("1_tk5fu")
+lure_scene = ExtResource("2_ujjg4")

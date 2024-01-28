@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvlmnc8b322kc"]
+
+[ext_resource type="Script" path="res://scripts/enemies/projectile.gd" id="1_ke22l"]
+[ext_resource type="Texture2D" uid="uid://y1llwulxucts" path="res://images/sprites/enemies/fuzzy/marrom/inimigo_marrom_projetil.png" id="2_vhsev"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_is10g"]
+radius = 24.0
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_ke22l")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_vhsev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_is10g")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(5.6, 5)

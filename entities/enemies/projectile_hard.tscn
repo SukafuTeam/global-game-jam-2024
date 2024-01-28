@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://fh4sdt3nlhro"]
+
+[ext_resource type="Script" path="res://scripts/enemies/projectile_enemy.gd" id="1_decuc"]
+[ext_resource type="Texture2D" uid="uid://dkulsjg36nog" path="res://images/sprites/enemies/fuzzy/roxo/inimigo_roxo_idle.png" id="2_bll0m"]
+[ext_resource type="Texture2D" uid="uid://cwbkq7v6kndtf" path="res://images/sprites/enemies/fuzzy/roxo/inimigo_roxo_cuspindo.png" id="3_pv6mw"]
+[ext_resource type="Texture2D" uid="uid://dk7fydg0i8wjn" path="res://images/sprites/enemies/fuzzy/roxo/inimigo_roxo_costas.png" id="4_g2k43"]
+[ext_resource type="PackedScene" uid="uid://dvlmnc8b322kc" path="res://entities/enemies/projectile.tscn" id="5_5al3g"]
+[ext_resource type="Shader" path="res://shaders/flash_color.gdshader" id="6_5gptc"]
+[ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="7_2ur1l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wb6fv"]
+resource_local_to_scene = true
+shader = ExtResource("6_5gptc")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = null
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hrkyj"]
+radius = 18.1108
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1qpca"]
+radius = 66.7533
+
+[node name="ProjectileHard" type="CharacterBody2D"]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_decuc")
+move_speed = 400.0
+move_accel = 10.0
+down_idle_texture = ExtResource("2_bll0m")
+down_shoot_texture = ExtResource("3_pv6mw")
+up_texture = ExtResource("4_g2k43")
+shoot_distance = 500.0
+inhale_time = 0.5
+exhale_time = 0.5
+projectile = ExtResource("5_5al3g")
+health = 8
+death_color = Color(0.615686, 0.270588, 0.509804, 1)
+
+[node name="BodyContainer" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="BodyContainer"]
+material = SubResource("ShaderMaterial_wb6fv")
+position = Vector2(0, -82)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_pv6mw")
+
+[node name="ProjectTileSpawn" type="Node2D" parent="BodyContainer/Body"]
+position = Vector2(43, 27)
+
+[node name="Shadow" type="Sprite2D" parent="BodyContainer"]
+modulate = Color(0, 0, 0, 0.392157)
+z_index = -1
+scale = Vector2(0.353333, 0.146667)
+texture = ExtResource("7_2ur1l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hrkyj")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -82)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_1qpca")
+debug_color = Color(1, 1, 0, 0.419608)

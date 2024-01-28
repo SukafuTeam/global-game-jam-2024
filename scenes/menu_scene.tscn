@@ -1,6 +1,11 @@
-[gd_scene format=3 uid="uid://d14ld8dahhxbn"]
+[gd_scene load_steps=3 format=3 uid="uid://d14ld8dahhxbn"]
+
+[ext_resource type="Script" path="res://scripts/scenes/menu_scene.gd" id="1_csg24"]
+[ext_resource type="AudioStream" uid="uid://b5sxbbqkq2msf" path="res://sounds/bmg/menu_music.ogg" id="2_lcn8u"]
 
 [node name="MenuScene" type="CanvasLayer"]
+script = ExtResource("1_csg24")
+menu_music = ExtResource("2_lcn8u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -8,3 +13,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 693.0
+offset_top = 303.0
+offset_right = 1115.0
+offset_bottom = 390.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 63
+text = "Dental Striker"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 563.0
+offset_top = 645.0
+offset_right = 1297.0
+offset_bottom = 732.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 63
+text = "Press attack to play"

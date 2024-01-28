@@ -1,0 +1,163 @@
+[gd_scene load_steps=21 format=3 uid="uid://l5k8r4imad1n"]
+
+[ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="1_oct5y"]
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_xia5h"]
+[ext_resource type="Shader" path="res://shaders/flash_color.gdshader" id="2_1u6ek"]
+[ext_resource type="AudioStream" uid="uid://cd7exvtm5i8wx" path="res://sounds/sfx/dash.ogg" id="2_yqajk"]
+[ext_resource type="PackedScene" uid="uid://dn63h0y4gy7fq" path="res://animations/Player/animation_player.tscn" id="3_euoq1"]
+[ext_resource type="AudioStream" uid="uid://b1j5qbqd0epi6" path="res://sounds/sfx/footsteps.ogg" id="3_ktlae"]
+[ext_resource type="Texture2D" uid="uid://bbmx15ialgvl6" path="res://images/sprites/placeholder/placeholder_player_2_down.png" id="3_sq3c3"]
+[ext_resource type="AudioStream" uid="uid://da3rhgcvebbks" path="res://sounds/sfx/sword.ogg" id="4_8kvnv"]
+[ext_resource type="Texture2D" uid="uid://0g2fqded0jqu" path="res://images/sprites/placeholder/placeholder_player_2_up.png" id="4_hmxag"]
+[ext_resource type="AudioStream" uid="uid://bicc0xwxnn0dj" path="res://sounds/sfx/taking_damage.ogg" id="5_xt3yw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ifdi"]
+shader = ExtResource("2_1u6ek")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp61j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sq3c3")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hmxag")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aak8m"]
+radius = 26.0192
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ecylw"]
+radius = 23.0
+height = 70.0
+
+[sub_resource type="Curve" id="Curve_dgg1t"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 100), 354.945, 354.945, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_n077q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.09694, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_rjme5"]
+offsets = PackedFloat32Array(0, 0.703333, 1)
+colors = PackedColorArray(0.975736, 0.975736, 0.975736, 1, 0.977434, 0.977434, 0.977434, 0.93, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_rnmu5"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.553073, 74.0618), 0.0, 0.0, 0, 0, Vector2(1, 8.59857), 217.638, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_icpsc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.324022, 1), 0.0, 0.0, 0, 0, Vector2(0.99162, 0.623278), -1.06799, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_f6hn5"]
+offsets = PackedFloat32Array(0, 0.293333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.873333, 1, 1, 1, 0)
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+position = Vector2(2.08165e-12, 2.08165e-12)
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_xia5h")
+dash_effect = ExtResource("2_yqajk")
+step_effect = ExtResource("3_ktlae")
+attack_effect = ExtResource("4_8kvnv")
+damage_effect = ExtResource("5_xt3yw")
+
+[node name="BodyContainer" type="Node2D" parent="."]
+
+[node name="PlayerAnimation" parent="BodyContainer" instance=ExtResource("3_euoq1")]
+position = Vector2(-1, -37)
+scale = Vector2(0.744115, 0.744115)
+
+[node name="Shadow" type="Sprite2D" parent="BodyContainer/PlayerAnimation"]
+modulate = Color(0, 0, 0, 0.392157)
+z_index = -1
+position = Vector2(-5.37551, 49.7235)
+scale = Vector2(0.358368, 0.143347)
+texture = ExtResource("1_oct5y")
+
+[node name="Body" type="AnimatedSprite2D" parent="BodyContainer"]
+visible = false
+material = SubResource("ShaderMaterial_2ifdi")
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.74801, 0.74801)
+sprite_frames = SubResource("SpriteFrames_qp61j")
+animation = &"down"
+offset = Vector2(-1, -85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -26)
+shape = SubResource("CircleShape2D_aak8m")
+
+[node name="Hitbox" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-2.08165e-12, -58)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_ecylw")
+debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="WalkParticle" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-1, 1)
+amount = 10
+lifetime = 0.2
+explosiveness = 0.45
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(2.08165e-12, -1)
+spread = 80.0
+gravity = Vector2(2.08165e-12, 300)
+initial_velocity_min = 80.0
+initial_velocity_max = 100.0
+damping_min = 100.0
+damping_max = 100.0
+damping_curve = SubResource("Curve_dgg1t")
+angle_max = 360.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_n077q")
+color = Color(0.564706, 1, 0.647059, 0.392157)
+color_ramp = SubResource("Gradient_rjme5")
+
+[node name="DamageParticle" type="CPUParticles2D" parent="."]
+z_index = 100
+position = Vector2(-2.08165e-12, -58)
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+randomness = 0.49
+lifetime_randomness = 0.86
+texture = ExtResource("1_oct5y")
+emission_shape = 1
+emission_sphere_radius = 50.0
+spread = 20.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1200.0
+damping_min = 1000.0
+damping_max = 1500.0
+damping_curve = SubResource("Curve_rnmu5")
+scale_amount_min = 0.03
+scale_amount_max = 0.06
+scale_amount_curve = SubResource("Curve_icpsc")
+color_ramp = SubResource("Gradient_f6hn5")

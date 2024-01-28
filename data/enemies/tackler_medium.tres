@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://b1qy3m8ud0g5"]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_5hotc"]
+[ext_resource type="PackedScene" uid="uid://dn4lfm33bxh8d" path="res://entities/enemies/tackler_medium.tscn" id="1_kvuw7"]
+
+[resource]
+script = ExtResource("1_5hotc")
+name = "Zack Yellow"
+scene = ExtResource("1_kvuw7")
+cost = 5
+preffered_stage = 6
+stage_decay = 4

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://ch6dad6wn0yfn"]
+
+[ext_resource type="PackedScene" uid="uid://dsat1l6vac73t" path="res://entities/weapons/spear_weapon.tscn" id="1_0vbhd"]
+[ext_resource type="Script" path="res://scripts/data/weapon_data.gd" id="1_cti33"]
+
+[resource]
+script = ExtResource("1_cti33")
+damage = 1
+speed = 4
+entity = ExtResource("1_0vbhd")
+spawn_offset = Vector2(2.08165e-12, -55)

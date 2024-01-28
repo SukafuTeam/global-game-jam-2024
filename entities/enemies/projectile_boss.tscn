@@ -1,0 +1,122 @@
+[gd_scene load_steps=18 format=3 uid="uid://bebayrx7sxxvb"]
+
+[ext_resource type="Shader" path="res://shaders/flash_color.gdshader" id="1_f71kh"]
+[ext_resource type="Texture2D" uid="uid://rhkr6dpavkkt" path="res://images/sprites/enemies/projectile boss/Referência_.png" id="1_tgvxc"]
+[ext_resource type="Script" path="res://scripts/enemies/projectile_boss.gd" id="1_xj8bw"]
+[ext_resource type="Texture2D" uid="uid://bvo24lesne35c" path="res://images/sprites/enemies/projectile boss/__0003_braços.png" id="2_avjtl"]
+[ext_resource type="Texture2D" uid="uid://cmg45ox8m5k3q" path="res://images/sprites/enemies/projectile boss/cabeça_.png" id="2_nes3n"]
+[ext_resource type="Texture2D" uid="uid://bjkmqq7srjeoh" path="res://images/sprites/enemies/projectile boss/Pernas.png" id="3_5808f"]
+[ext_resource type="PackedScene" uid="uid://dvlmnc8b322kc" path="res://entities/enemies/projectile.tscn" id="3_qbb3s"]
+[ext_resource type="Texture2D" uid="uid://cbcsotg53v30q" path="res://images/sprites/enemies/projectile boss/cuspindo.png" id="5_0bj5w"]
+[ext_resource type="Texture2D" uid="uid://cgik4sv56s5i7" path="res://images/sprites/enemies/projectile boss/__0006_asa_esq.png" id="5_jbepk"]
+[ext_resource type="Texture2D" uid="uid://bmxn26rlax0rt" path="res://images/sprites/enemies/projectile boss/__0007_asa_dir.png" id="6_r15mk"]
+[ext_resource type="Texture2D" uid="uid://7sfqnvgyghu6" path="res://images/sprites/enemies/projectile boss/__0001_idle.png" id="6_sk4tr"]
+[ext_resource type="Texture2D" uid="uid://bgobycfqip6tk" path="res://images/sprites/enemies/projectile boss/__0001_olhos.png" id="7_n7m86"]
+[ext_resource type="Texture2D" uid="uid://x0j7d2rq5u1o" path="res://images/sprites/enemies/projectile boss/__0000_dano.png" id="10_0smjc"]
+[ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="14_pjibj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6okyo"]
+shader = ExtResource("1_f71kh")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wb04"]
+radius = 20.0998
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwafu"]
+radius = 190.379
+
+[node name="ProjectileBoss" type="CharacterBody2D"]
+material = SubResource("ShaderMaterial_6okyo")
+motion_mode = 1
+script = ExtResource("1_xj8bw")
+move_speed = 250.0
+move_accel = 20.0
+fly_amplitude = 50.0
+shoot_distance = 400.0
+projectile = ExtResource("3_qbb3s")
+health = 70
+
+[node name="Referência" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(6, -42)
+texture = ExtResource("1_tgvxc")
+
+[node name="BodyContainer" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Arms" type="Sprite2D" parent="BodyContainer"]
+use_parent_material = true
+position = Vector2(0, -199)
+texture = ExtResource("2_avjtl")
+
+[node name="Legs" type="Sprite2D" parent="BodyContainer"]
+use_parent_material = true
+position = Vector2(1, -178)
+texture = ExtResource("3_5808f")
+offset = Vector2(-1, 143)
+
+[node name="Body" type="Sprite2D" parent="BodyContainer"]
+use_parent_material = true
+position = Vector2(0, -199)
+texture = ExtResource("2_nes3n")
+
+[node name="LeftWing" type="Sprite2D" parent="BodyContainer/Body"]
+z_index = -1
+use_parent_material = true
+position = Vector2(-96, -109)
+texture = ExtResource("5_jbepk")
+offset = Vector2(28, -89)
+
+[node name="RightWing" type="Sprite2D" parent="BodyContainer/Body"]
+z_index = -1
+use_parent_material = true
+position = Vector2(88, -108)
+texture = ExtResource("6_r15mk")
+offset = Vector2(28, -89)
+
+[node name="ShootingFace" type="Sprite2D" parent="BodyContainer/Body"]
+visible = false
+use_parent_material = true
+position = Vector2(-5, 51)
+texture = ExtResource("5_0bj5w")
+
+[node name="DamageFace" type="Sprite2D" parent="BodyContainer/Body"]
+visible = false
+use_parent_material = true
+position = Vector2(-7, 3)
+texture = ExtResource("10_0smjc")
+
+[node name="IdleFace" type="Sprite2D" parent="BodyContainer/Body"]
+use_parent_material = true
+position = Vector2(-14, 0)
+texture = ExtResource("6_sk4tr")
+
+[node name="CenterEyes" type="Node2D" parent="BodyContainer/Body/IdleFace"]
+position = Vector2(2, -27)
+
+[node name="eyes" type="Sprite2D" parent="BodyContainer/Body/IdleFace/CenterEyes"]
+position = Vector2(1, 2.08165e-12)
+texture = ExtResource("7_n7m86")
+
+[node name="ProjectTileSpawn" type="Marker2D" parent="BodyContainer/Body"]
+position = Vector2(0, 138)
+
+[node name="Shadow" type="Sprite2D" parent="BodyContainer"]
+modulate = Color(0, 0, 0, 0.392157)
+z_index = -1
+position = Vector2(0, 44)
+scale = Vector2(1.24, 0.34)
+texture = ExtResource("14_pjibj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4wb04")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -177)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_jwafu")
+debug_color = Color(1, 1, 0, 0.419608)

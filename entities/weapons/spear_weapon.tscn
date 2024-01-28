@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsat1l6vac73t"]
+
+[ext_resource type="Script" path="res://scripts/weapons/poke_weapon.gd" id="1_iuwx0"]
+[ext_resource type="Texture2D" uid="uid://ch60tesv22iem" path="res://images/sprites/weapons/__0006_seringa_maos.png" id="2_sy4hf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tip6f"]
+size = Vector2(200, 58)
+
+[sub_resource type="Curve" id="Curve_1qqtl"]
+_data = [Vector2(0, 0.103636), 0.0, 1.38964, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_rg2ex"]
+colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0)
+
+[node name="SpearWeapon" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_iuwx0")
+hurt_range = Vector2(0.1, 0.5)
+
+[node name="SpriteRoot" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="HurtBox" type="Area2D" parent="SpriteRoot"]
+position = Vector2(132, 0)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteRoot/HurtBox"]
+shape = SubResource("RectangleShape2D_tip6f")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Spear" type="Sprite2D" parent="SpriteRoot"]
+position = Vector2(132.667, 0.338378)
+rotation = 1.55869
+scale = Vector2(0.581315, 0.581315)
+texture = ExtResource("2_sy4hf")
+offset = Vector2(2.21963, 52.7857)
+
+[node name="Line2D" type="Line2D" parent="SpriteRoot/Spear"]
+points = PackedVector2Array(5.79287, -100.283, 3.44811, -48.7008, 1.0617, 6.32185, 3.64824, 76.888, 0.907868, 161.153, 0.533079, 192.115)
+width = 100.0
+width_curve = SubResource("Curve_1qqtl")
+gradient = SubResource("Gradient_rg2ex")

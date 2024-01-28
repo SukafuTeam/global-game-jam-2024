@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SecondaryData" load_steps=3 format=3 uid="uid://bu44dmcgkrln0"]
+
+[ext_resource type="PackedScene" uid="uid://djauyyb6pjgb4" path="res://entities/secondaries/invincible_item.tscn" id="1_6ce4f"]
+[ext_resource type="Script" path="res://scripts/data/secondary_data.gd" id="1_baqfd"]
+
+[resource]
+script = ExtResource("1_baqfd")
+name = "Invincibility"
+scene = ExtResource("1_6ce4f")

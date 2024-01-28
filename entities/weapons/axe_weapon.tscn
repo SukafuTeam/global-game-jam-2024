@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0qmpy1n3jdmb"]
+
+[ext_resource type="Script" path="res://scripts/weapons/swipe_weapon.gd" id="1_dbjhn"]
+[ext_resource type="Texture2D" uid="uid://b7tweusfbcb1l" path="res://images/sprites/weapons/__0009_alicate_maos.png" id="2_djist"]
+
+[sub_resource type="Curve2D" id="Curve2D_i218s"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2.08165e-12, -100, 2.08165e-12, -100, 2.08165e-12, 100, 100, 1, 0, 0, 0, 0, 2.08165e-12, 100)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw2ix"]
+size = Vector2(235, 376)
+
+[sub_resource type="Curve" id="Curve_1jyqf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0290538, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8bco5"]
+colors = PackedColorArray(1, 1, 1, 0.392157, 1, 1, 1, 0)
+
+[node name="AxeWeapon" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_dbjhn")
+zig_zag_animation = false
+cooldown_time = 0.2
+attack_move_speed = 20.0
+recoild_move_speed = 50.0
+attack_time = 0.5
+hurt_range = Vector2(0.5, 0.8)
+attack_trans_type = 4
+
+[node name="SpriteRoot" type="Marker2D" parent="."]
+y_sort_enabled = true
+
+[node name="ArcPath" type="Path2D" parent="."]
+y_sort_enabled = true
+curve = SubResource("Curve2D_i218s")
+
+[node name="HurtBox" type="Area2D" parent="ArcPath"]
+position = Vector2(91, 0)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArcPath/HurtBox"]
+position = Vector2(54.5, 0)
+shape = SubResource("RectangleShape2D_uw2ix")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="ArcFollow" type="PathFollow2D" parent="ArcPath"]
+position = Vector2(82.0182, 61.9631)
+rotation = 2.21204
+progress = 223.8
+cubic_interp = false
+loop = false
+
+[node name="Sword" type="Sprite2D" parent="ArcPath/ArcFollow"]
+position = Vector2(0.00167205, -95.0089)
+scale = Vector2(0.766895, 0.766895)
+texture = ExtResource("2_djist")
+offset = Vector2(3.52715, 64.8658)
+flip_h = true
+
+[node name="TrailLeft" type="Line2D" parent="ArcPath/ArcFollow/Sword"]
+z_index = -1
+position = Vector2(0.0644747, -11.7355)
+points = PackedVector2Array(-3.95262, 2.23367, -32.6608, 5.9879, -53.5811, 16.3048, -74.5015, 26.6217, -91.5387, 42.1758, -105.968, 57.7443, -120.404, 74.6167, -130.936, 92.8146, -138.846, 108.419)
+width = 80.0
+width_curve = SubResource("Curve_1jyqf")
+gradient = SubResource("Gradient_8bco5")
+
+[node name="TrailRight" type="Line2D" parent="ArcPath/ArcFollow/Sword"]
+z_index = -1
+position = Vector2(0.0788024, -14.3434)
+scale = Vector2(-1, 1)
+points = PackedVector2Array(-3.95262, 2.23367, -32.6608, 5.9879, -53.5811, 16.3048, -74.5015, 26.6217, -91.5387, 42.1758, -105.968, 57.7443, -120.404, 74.6167, -130.936, 92.8146, -138.846, 108.419)
+width = 80.0
+width_curve = SubResource("Curve_1jyqf")
+gradient = SubResource("Gradient_8bco5")

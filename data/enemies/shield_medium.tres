@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://bwnbvscgumj2w"]
+
+[ext_resource type="PackedScene" uid="uid://b33v6w7we3vdq" path="res://entities/enemies/shield_medium.tscn" id="1_23bmq"]
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_402sm"]
+
+[resource]
+script = ExtResource("1_402sm")
+name = "Gurguba Blue"
+scene = ExtResource("1_23bmq")
+cost = 4
+preffered_stage = 5
+stage_decay = 3

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SecondaryData" load_steps=3 format=3 uid="uid://cgh38gfue1qxu"]
+
+[ext_resource type="Script" path="res://scripts/data/secondary_data.gd" id="1_4rqat"]
+[ext_resource type="PackedScene" uid="uid://bu3k5uuyeab7e" path="res://entities/secondaries/acid_container.tscn" id="1_id5i8"]
+
+[resource]
+script = ExtResource("1_4rqat")
+name = "Acid"
+scene = ExtResource("1_id5i8")

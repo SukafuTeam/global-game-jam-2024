@@ -31,13 +31,13 @@ func _ready():
 func on_stream_finised(stream):
 	available.append(stream)
 
-func play_sfx(effect: AudioStream, volume: float = -1.0):
+func play_sfx(effect: AudioStream, volume: float = -1.0, pitch: float = -1.0):
 	if effect == null:
 		push_warning("Trying to play a null sfx")
 		return
 	
 	# Adds a new effect to be played
-	queue.append(SoundEffect.new(effect, volume))
+	queue.append(SoundEffect.new(effect, volume, pitch))
 
 func _process(_delta):
 	# If there's no sounds to be played, or no available players, return early
@@ -52,6 +52,9 @@ func _process(_delta):
 	player.stream = effect.stream
 	var f_volume = effect.volume if effect.volume != -1 else 1
 	player.volume_db = linear_to_db(f_volume)
+	
+	var f_pitch  = effect.pitch if effect.pitch != -1 else 1
+	player.pitch_scale = f_pitch
 	
 	# And finally play the effect
 	player.play()

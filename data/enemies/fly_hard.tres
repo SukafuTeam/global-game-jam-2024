@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://dxc00x1s2aa5r"]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_5jhd0"]
+[ext_resource type="PackedScene" uid="uid://d3qie62bxbpba" path="res://entities/enemies/flyer_hard.tscn" id="1_8a2ln"]
+
+[resource]
+script = ExtResource("1_5jhd0")
+name = "Smoke Purple"
+scene = ExtResource("1_8a2ln")
+cost = 5
+preffered_stage = 8
+stage_decay = 4

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://c3ihodfydghk8"]
+
+[ext_resource type="PackedScene" uid="uid://dvrv2ttjijfp0" path="res://entities/enemies/tackler_hard.tscn" id="1_goucc"]
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_vgdiu"]
+
+[resource]
+script = ExtResource("1_vgdiu")
+name = "Zack Red"
+scene = ExtResource("1_goucc")
+cost = 6
+preffered_stage = 8
+stage_decay = 4

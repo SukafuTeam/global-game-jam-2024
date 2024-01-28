@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://dwyuhtv21vx6n"]
+
+[ext_resource type="PackedScene" uid="uid://caod8m1tpi81g" path="res://entities/enemies/projectile_medium.tscn" id="1_pijfb"]
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_y16ju"]
+
+[resource]
+script = ExtResource("1_y16ju")
+name = "Fuzzy Green"
+scene = ExtResource("1_pijfb")
+cost = 5
+preffered_stage = 7
+stage_decay = 4

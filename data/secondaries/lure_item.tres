@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SecondaryData" load_steps=3 format=3 uid="uid://cx13hvion0gye"]
+
+[ext_resource type="Script" path="res://scripts/data/secondary_data.gd" id="1_2gdsb"]
+[ext_resource type="PackedScene" uid="uid://cfavjq6r0yfrn" path="res://entities/secondaries/lure_container.tscn" id="1_p1mk5"]
+
+[resource]
+script = ExtResource("1_2gdsb")
+name = "Lure"
+scene = ExtResource("1_p1mk5")

@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvrv2ttjijfp0"]
+
+[ext_resource type="Script" path="res://scripts/enemies/tackler_enemy.gd" id="1_uqv28"]
+[ext_resource type="Texture2D" uid="uid://bc2y8yvvednoi" path="res://images/sprites/enemies/tackler/__0001_vermelho_idle.png" id="2_rsflw"]
+[ext_resource type="Texture2D" uid="uid://5op7uvdwo7eh" path="res://images/sprites/enemies/tackler/__0003_vermelho_ataque.png" id="3_slao2"]
+[ext_resource type="Texture2D" uid="uid://td87v5vsb5j" path="res://images/sprites/enemies/tackler/__0006_vermelho_costas.png" id="4_kjxh0"]
+[ext_resource type="Shader" path="res://shaders/flash_color.gdshader" id="5_87xhw"]
+[ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="6_scm26"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hj51l"]
+resource_local_to_scene = true
+shader = ExtResource("5_87xhw")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 0.02
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56qix"]
+radius = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8dfp5"]
+radius = 39.0128
+
+[node name="TacklerMedium" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_uqv28")
+move_speed = 300.0
+move_accell = 30.0
+max_jump_heigh = 50.0
+jump_speed = 25.0
+tackle_time = 0.4
+tackle_move_speed = 800.0
+tackle_distance = 300.0
+prep_time = 0.4
+down_move_texture = ExtResource("2_rsflw")
+down_tackle_texture = ExtResource("3_slao2")
+up_texture = ExtResource("4_kjxh0")
+health = 12
+death_color = Color(0.8, 0.352941, 0.254902, 1)
+
+[node name="BodyContainer" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="BodyContainer"]
+material = SubResource("ShaderMaterial_hj51l")
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(1.35133, 1.35133)
+texture = ExtResource("2_rsflw")
+offset = Vector2(0, -37)
+
+[node name="Shadow" type="Sprite2D" parent="BodyContainer"]
+modulate = Color(0, 0, 0, 0.392157)
+z_index = -1
+position = Vector2(0, -5)
+scale = Vector2(0.24, 0.0866667)
+texture = ExtResource("6_scm26")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21)
+scale = Vector2(1.13646, 1.13646)
+shape = SubResource("CircleShape2D_56qix")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(1.21795, 1.21795)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_8dfp5")
+debug_color = Color(1, 1, 0, 0.419608)

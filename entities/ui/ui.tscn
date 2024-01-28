@@ -1,0 +1,343 @@
+[gd_scene load_steps=27 format=3 uid="uid://bjqlx7sbk62ii"]
+
+[ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_pd8f5"]
+[ext_resource type="Texture2D" uid="uid://dqkdtbiv52ogm" path="res://images/ui/UIgame/Raizes/raizCima.png" id="2_p54d0"]
+[ext_resource type="Texture2D" uid="uid://dr7vew600frv3" path="res://images/ui/UIgame/Hud/hudGengiva.png" id="3_d5ye7"]
+[ext_resource type="Texture2D" uid="uid://crlc5y4a57j4t" path="res://images/ui/UIgame/Hud/dente_1_buraco.png" id="4_t0ck4"]
+[ext_resource type="Texture2D" uid="uid://bdx1sutg4dcbs" path="res://images/ui/UIgame/Hud/dente_1.png" id="5_ateur"]
+[ext_resource type="Texture2D" uid="uid://cpl7hmphnb1tc" path="res://images/ui/UIgame/Hud/dente_2_buraco.png" id="6_5n74g"]
+[ext_resource type="Texture2D" uid="uid://blyjbqakilkpx" path="res://images/ui/UIgame/Hud/dente_2.png" id="7_x1d0n"]
+[ext_resource type="Texture2D" uid="uid://cp74guhy4o0hs" path="res://images/ui/UIgame/Hud/dente_3_buraco.png" id="8_k6g5w"]
+[ext_resource type="Texture2D" uid="uid://cn83wbsr6uh5b" path="res://images/ui/UIgame/Hud/dente_3.png" id="9_6yl4l"]
+[ext_resource type="Texture2D" uid="uid://dnspa7nt46j6a" path="res://images/ui/UIgame/Hud/dente_4_buraco.png" id="10_hed1g"]
+[ext_resource type="Texture2D" uid="uid://bri2b88fk1hqa" path="res://images/ui/UIgame/Hud/dente_4.png" id="11_83t08"]
+[ext_resource type="Texture2D" uid="uid://dkqlbao20ob8" path="res://images/ui/UIgame/Hud/dente_5_buraco.png" id="12_r0p4b"]
+[ext_resource type="Texture2D" uid="uid://dcx2tscgdjohs" path="res://images/ui/UIgame/Hud/dente_5.png" id="13_jpa16"]
+[ext_resource type="Texture2D" uid="uid://3db4tcoplxlh" path="res://images/ui/UIgame/Hud/manaIcon.png" id="14_sb80o"]
+[ext_resource type="Texture2D" uid="uid://c1ob3lg3b6joo" path="res://images/ui/UIgame/Raizes/raizDireita.png" id="15_uso3j"]
+[ext_resource type="Texture2D" uid="uid://beno8pgdvj43s" path="res://images/ui/UIgame/Molduras/molduraPrimaria.png" id="16_kysd8"]
+[ext_resource type="Texture2D" uid="uid://bi22hn5ic5p6b" path="res://images/ui/UIgame/Molduras/molduraSecundaria.png" id="17_344m5"]
+[ext_resource type="Texture2D" uid="uid://bhjcjptchrsv2" path="res://images/ui/UIgame/Molduras/teclaZ.png" id="17_jkrse"]
+[ext_resource type="Texture2D" uid="uid://tphad3epkv8u" path="res://images/ui/UIgame/Molduras/consoleBaixo.png" id="17_opgw0"]
+[ext_resource type="Script" path="res://scripts/ui/input_texture.gd" id="18_pq1au"]
+[ext_resource type="Texture2D" uid="uid://cxfjxxyd5qwon" path="res://images/ui/UIgame/Molduras/teclaX.png" id="19_rb23h"]
+[ext_resource type="Texture2D" uid="uid://dsta1agqlgpqr" path="res://images/ui/UIgame/Molduras/consoleCima.png" id="19_wicth"]
+[ext_resource type="Texture2D" uid="uid://b6ewk84ojr6ed" path="res://images/ui/UIgame/Raizes/raizBaixo.png" id="20_mwu3x"]
+[ext_resource type="Texture2D" uid="uid://ctsqqhncllbp3" path="res://images/ui/UIgame/Barra waves/barraWave.png" id="21_m04tt"]
+[ext_resource type="Texture2D" uid="uid://dwkp2yv3c76yb" path="res://images/ui/UIgame/Barra waves/loadingBarWave.png" id="22_f0wdp"]
+[ext_resource type="Texture2D" uid="uid://dobral8cy5cqp" path="res://images/ui/UIgame/Barra waves/waveAlert.png" id="26_0eor0"]
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("hearts", "manas")]
+script = ExtResource("1_pd8f5")
+hearts = [NodePath("Container/RaizCima/HealthContainer/Heart1/Value"), NodePath("Container/RaizCima/HealthContainer/Heart2/Value"), NodePath("Container/RaizCima/HealthContainer/Heart3/Value"), NodePath("Container/RaizCima/HealthContainer/Heart4/Value"), NodePath("Container/RaizCima/HealthContainer/Heart5/Value")]
+manas = [NodePath("Container/RaizCima/HealthContainer/Mana1"), NodePath("Container/RaizCima/HealthContainer/Mana2"), NodePath("Container/RaizCima/HealthContainer/Mana3"), NodePath("Container/RaizCima/HealthContainer/Mana4"), NodePath("Container/RaizCima/HealthContainer/Mana5")]
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WaveCounter" type="Label" parent="Container"]
+visible = false
+layout_mode = 1
+offset_left = 21.0
+offset_top = 20.0
+offset_right = 165.0
+offset_bottom = 123.0
+theme_override_font_sizes/font_size = 36
+text = "Stage: 1
+Wave:  1"
+
+[node name="RaizCima" type="TextureRect" parent="Container"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = -35.0
+offset_right = 636.0
+offset_bottom = 154.0
+pivot_offset = Vector2(-1, 36)
+texture = ExtResource("2_p54d0")
+
+[node name="HealthContainer" type="TextureRect" parent="Container/RaizCima"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.5
+offset_top = 13.5
+offset_right = 208.5
+offset_bottom = 126.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_d5ye7")
+
+[node name="Heart1" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 3.0
+offset_right = 116.0
+offset_bottom = 48.0
+texture = ExtResource("4_t0ck4")
+
+[node name="Value" type="TextureRect" parent="Container/RaizCima/HealthContainer/Heart1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -54.5
+offset_right = 33.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ateur")
+
+[node name="Heart2" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 3.0
+offset_right = 203.0
+offset_bottom = 48.0
+texture = ExtResource("6_5n74g")
+
+[node name="Value" type="TextureRect" parent="Container/RaizCima/HealthContainer/Heart2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -59.5
+offset_right = 37.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_x1d0n")
+
+[node name="Heart3" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = -6.0
+offset_right = 288.0
+offset_bottom = 39.0
+texture = ExtResource("8_k6g5w")
+
+[node name="Value" type="TextureRect" parent="Container/RaizCima/HealthContainer/Heart3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -62.5
+offset_right = 34.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_6yl4l")
+
+[node name="Heart4" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
+layout_mode = 0
+offset_left = 292.0
+offset_top = -8.0
+offset_right = 370.0
+offset_bottom = 37.0
+texture = ExtResource("10_hed1g")
+
+[node name="Value" type="TextureRect" parent="Container/RaizCima/HealthContainer/Heart4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -62.5
+offset_right = 36.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_83t08")
+
+[node name="Heart5" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
+layout_mode = 0
+offset_left = 378.0
+offset_right = 477.0
+offset_bottom = 45.0
+texture = ExtResource("12_r0p4b")
+
+[node name="Value" type="TextureRect" parent="Container/RaizCima/HealthContainer/Heart5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -62.5
+offset_right = 36.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_jpa16")
+
+[node name="Mana1" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 105.0
+offset_right = 104.0
+offset_bottom = 159.0
+texture = ExtResource("14_sb80o")
+
+[node name="Mana2" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 105.0
+offset_right = 191.0
+offset_bottom = 159.0
+texture = ExtResource("14_sb80o")
+
+[node name="Mana3" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 105.0
+offset_right = 273.0
+offset_bottom = 159.0
+texture = ExtResource("14_sb80o")
+
+[node name="Mana4" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
+layout_mode = 0
+offset_left = 327.0
+offset_top = 104.0
+offset_right = 367.0
+offset_bottom = 158.0
+texture = ExtResource("14_sb80o")
+
+[node name="Mana5" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 111.0
+offset_right = 471.0
+offset_bottom = 165.0
+texture = ExtResource("14_sb80o")
+
+[node name="RaizItem" type="TextureRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -549.0
+offset_right = 257.0
+offset_bottom = 184.0
+grow_vertical = 0
+texture = ExtResource("15_uso3j")
+
+[node name="WeaponContainer" type="TextureRect" parent="Container/RaizItem"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 170.0
+offset_right = 222.0
+offset_bottom = 320.0
+texture = ExtResource("16_kysd8")
+
+[node name="Input" type="TextureRect" parent="Container/RaizItem/WeaponContainer"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 179.0
+offset_bottom = 176.0
+texture = ExtResource("17_opgw0")
+script = ExtResource("18_pq1au")
+keyboard_texture = ExtResource("17_jkrse")
+gamepad_texture = ExtResource("17_opgw0")
+
+[node name="SecundaryContainer" type="TextureRect" parent="Container/RaizItem"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 368.0
+offset_right = 230.0
+offset_bottom = 518.0
+texture = ExtResource("17_344m5")
+
+[node name="Input" type="TextureRect" parent="Container/RaizItem/SecundaryContainer"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 179.0
+offset_bottom = 176.0
+texture = ExtResource("19_wicth")
+script = ExtResource("18_pq1au")
+keyboard_texture = ExtResource("19_rb23h")
+gamepad_texture = ExtResource("19_wicth")
+
+[node name="RaziMeio" type="TextureRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -524.0
+offset_top = -105.0
+offset_right = 524.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("20_mwu3x")
+
+[node name="BarraWave" type="TextureRect" parent="Container/RaziMeio"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -433.0
+offset_top = -53.5
+offset_right = 434.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_m04tt")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Container/RaziMeio/BarraWave"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 24.0
+offset_right = -19.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("22_f0wdp")
+texture_progress = ExtResource("22_f0wdp")
+tint_under = Color(0.196078, 0.196078, 0.196078, 0.458824)
+
+[node name="WaveIndicador" type="TextureRect" parent="Container/RaziMeio/BarraWave/TextureProgressBar"]
+layout_mode = 0
+offset_left = 235.0
+offset_top = -40.0
+offset_right = 314.0
+offset_bottom = 36.0
+texture = ExtResource("26_0eor0")
+
+[node name="WaveIndicador2" type="TextureRect" parent="Container/RaziMeio/BarraWave/TextureProgressBar"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = -39.0
+offset_right = 589.0
+offset_bottom = 37.0
+texture = ExtResource("26_0eor0")

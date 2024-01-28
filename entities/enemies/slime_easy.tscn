@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://wqwwtr8de2e4"]
+
+[ext_resource type="Script" path="res://scripts/enemies/slime_enemy.gd" id="1_fumci"]
+[ext_resource type="Shader" path="res://shaders/flash_color.gdshader" id="3_bsea8"]
+[ext_resource type="Texture2D" uid="uid://vxw2yqe5spn2" path="res://images/sprites/enemies/slime/__0004_slime_verde_costas.png" id="3_vt4l4"]
+[ext_resource type="Texture2D" uid="uid://bpxdebvhurpbr" path="res://images/sprites/enemies/slime/__0005_slime_verde_frente.png" id="4_lxlsx"]
+[ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="5_dp0nr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4v7j"]
+resource_local_to_scene = true
+shader = ExtResource("3_bsea8")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ohsd6"]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ypl8t"]
+radius = 36.0
+
+[node name="SlimeEasy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_fumci")
+move_speed = 150.0
+move_accel = 3.0
+move_time = 0.8
+final_scale_move = Vector2(1.2, 0.8)
+look_down_texture = ExtResource("4_lxlsx")
+look_up_texture = ExtResource("3_vt4l4")
+health = 5
+death_color = Color(0.717647, 0.819608, 0.513726, 1)
+
+[node name="BodyContainer" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="BodyContainer"]
+material = SubResource("ShaderMaterial_b4v7j")
+position = Vector2(0, -2)
+texture = ExtResource("4_lxlsx")
+offset = Vector2(0, -31)
+
+[node name="Shadow" type="Sprite2D" parent="BodyContainer"]
+modulate = Color(0, 0, 0, 0.392157)
+z_index = -1
+position = Vector2(0, -5)
+scale = Vector2(0.273333, 0.0866667)
+texture = ExtResource("5_dp0nr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+shape = SubResource("CircleShape2D_ohsd6")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -25)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_ypl8t")
+debug_color = Color(1, 1, 0, 0.419608)

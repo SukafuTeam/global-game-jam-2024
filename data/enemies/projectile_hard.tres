@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://bn14c4wb6f3y1"]
+
+[ext_resource type="PackedScene" uid="uid://fh4sdt3nlhro" path="res://entities/enemies/projectile_hard.tscn" id="1_7ub02"]
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_rvi6t"]
+
+[resource]
+script = ExtResource("1_rvi6t")
+name = "Fuzzy Red"
+scene = ExtResource("1_7ub02")
+cost = 7
+preffered_stage = 10
+stage_decay = 3

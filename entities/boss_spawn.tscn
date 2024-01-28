@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bx1df7bsyilqu"]
+
+[ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="1_nwiox"]
+[ext_resource type="Script" path="res://scripts/enemy_spawn.gd" id="1_qn1tv"]
+[ext_resource type="PackedScene" uid="uid://bhdb8ylg22vmm" path="res://entities/enemies/slime_boss.tscn" id="2_i0oxi"]
+
+[sub_resource type="Curve" id="Curve_gqau0"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.99162, 64.1805), 89.2875, 89.2875, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_fhh47"]
+_data = [Vector2(0, 0.076722), 0.0, 0.0, 0, 0, Vector2(0.980447, 1), 2.98475, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_pukah"]
+offsets = PackedFloat32Array(0, 0.93, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.85, 1, 1, 1, 0)
+
+[node name="BossParticle" type="Node2D"]
+script = ExtResource("1_qn1tv")
+enemy = ExtResource("2_i0oxi")
+
+[node name="Particle" type="CPUParticles2D" parent="."]
+position = Vector2(0, -44)
+scale = Vector2(6, 6)
+emitting = false
+amount = 1000
+lifetime = 3.0
+one_shot = true
+texture = ExtResource("1_nwiox")
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+radial_accel_min = -80.0
+radial_accel_max = -60.0
+damping_curve = SubResource("Curve_gqau0")
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_fhh47")
+color = Color(0.776471, 0.654902, 0.0980392, 0.509804)
+color_ramp = SubResource("Gradient_pukah")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://pd3eqqbs233b"]
+
+[ext_resource type="PackedScene" uid="uid://csuq1xhq32pww" path="res://entities/enemies/slime_hard.tscn" id="1_2ir0s"]
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_l505x"]
+
+[resource]
+script = ExtResource("1_l505x")
+name = "Slime Blue"
+scene = ExtResource("1_2ir0s")
+cost = 4
+preffered_stage = 8
+stage_decay = 5

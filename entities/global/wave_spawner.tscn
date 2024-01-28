@@ -1,0 +1,22 @@
+[gd_scene load_steps=17 format=3 uid="uid://cfia087wfskg5"]
+
+[ext_resource type="Script" path="res://scripts/wave_spawner.gd" id="1_smwh8"]
+[ext_resource type="Resource" uid="uid://df88o86637q3v" path="res://data/enemies/slime_easy.tres" id="2_idrsu"]
+[ext_resource type="Resource" uid="uid://b4h2reebd6imj" path="res://data/enemies/slime_medium.tres" id="3_mjad5"]
+[ext_resource type="Resource" uid="uid://pd3eqqbs233b" path="res://data/enemies/slime_hard.tres" id="4_7bpte"]
+[ext_resource type="Resource" uid="uid://bbmw8akc60m50" path="res://data/enemies/fly_easy.tres" id="5_m2xgw"]
+[ext_resource type="Resource" uid="uid://di308pyf5axvc" path="res://data/enemies/fly_medium.tres" id="6_jnwot"]
+[ext_resource type="Resource" uid="uid://dxc00x1s2aa5r" path="res://data/enemies/fly_hard.tres" id="7_0aatl"]
+[ext_resource type="Resource" uid="uid://bk01smhsdc5if" path="res://data/enemies/tackler_easy.tres" id="8_rvbnv"]
+[ext_resource type="Resource" uid="uid://b1qy3m8ud0g5" path="res://data/enemies/tackler_medium.tres" id="9_osnii"]
+[ext_resource type="Resource" uid="uid://c3ihodfydghk8" path="res://data/enemies/tackler_hard.tres" id="10_ahuvb"]
+[ext_resource type="Resource" uid="uid://h6amucwwm7i7" path="res://data/enemies/projectile_easy.tres" id="11_vmhao"]
+[ext_resource type="Resource" uid="uid://dwyuhtv21vx6n" path="res://data/enemies/projectile_medium.tres" id="12_qqdsk"]
+[ext_resource type="Resource" uid="uid://bn14c4wb6f3y1" path="res://data/enemies/projectile_hard.tres" id="13_wgixn"]
+[ext_resource type="Resource" uid="uid://hiyvq65kbx11" path="res://data/enemies/shield_easy.tres" id="14_5ctyq"]
+[ext_resource type="Resource" uid="uid://bwnbvscgumj2w" path="res://data/enemies/shield_medium.tres" id="15_rkglx"]
+[ext_resource type="Resource" uid="uid://btuqtg6c3383k" path="res://data/enemies/shield_hard.tres" id="16_tlyoe"]
+
+[node name="WaveSpawner" type="Node2D"]
+script = ExtResource("1_smwh8")
+enemies = Array[Resource("res://scripts/data/enemy_data.gd")]([ExtResource("2_idrsu"), ExtResource("3_mjad5"), ExtResource("4_7bpte"), ExtResource("5_m2xgw"), ExtResource("6_jnwot"), ExtResource("7_0aatl"), ExtResource("8_rvbnv"), ExtResource("9_osnii"), ExtResource("10_ahuvb"), ExtResource("11_vmhao"), ExtResource("12_qqdsk"), ExtResource("13_wgixn"), ExtResource("14_5ctyq"), ExtResource("15_rkglx"), ExtResource("16_tlyoe")])

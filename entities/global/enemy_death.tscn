@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq47cwx107b7u"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_death.gd" id="1_ygkhd"]
+[ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="2_aqhtg"]
+
+[sub_resource type="Curve" id="Curve_0sy5a"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.592179, 42.2565), 0.0, 0.0, 0, 0, Vector2(1, 36.3895), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_r1iti"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.96648, 0.0458432), -1.45921, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_38ww2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="EnemyDeath" type="Node2D"]
+script = ExtResource("1_ygkhd")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 2
+position = Vector2(0, -35)
+rotation = -1.48702
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 0.82
+randomness = 1.0
+texture = ExtResource("2_aqhtg")
+emission_shape = 2
+emission_sphere_radius = 50.0
+spread = 24.09
+gravity = Vector2(2.08165e-12, 400)
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+damping_min = 7.575
+damping_max = 7.575
+damping_curve = SubResource("Curve_0sy5a")
+angle_max = 360.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_r1iti")
+color = Color(1, 1, 1, 0.313726)
+color_ramp = SubResource("Gradient_38ww2")

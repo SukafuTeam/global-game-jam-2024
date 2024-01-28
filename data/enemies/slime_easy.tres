@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://df88o86637q3v"]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_ch642"]
+[ext_resource type="PackedScene" uid="uid://wqwwtr8de2e4" path="res://entities/enemies/slime_easy.tscn" id="1_lof4n"]
+
+[resource]
+script = ExtResource("1_ch642")
+name = "Slime Green"
+scene = ExtResource("1_lof4n")
+cost = 1
+preffered_stage = 1
+stage_decay = 5

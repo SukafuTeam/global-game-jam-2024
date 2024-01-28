@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu3k5uuyeab7e"]
+
+[ext_resource type="Script" path="res://scripts/secondaries/AcidContainer.gd" id="1_cf5re"]
+[ext_resource type="PackedScene" uid="uid://xa61c2ismaum" path="res://entities/secondaries/acid.tscn" id="2_xntyf"]
+
+[node name="AcidContainer" type="Node2D"]
+script = ExtResource("1_cf5re")
+acid = ExtResource("2_xntyf")

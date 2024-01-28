@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsc7efek5eaue"]
+
+[ext_resource type="Script" path="res://scripts/enemy_spawn.gd" id="1_fvajr"]
+[ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="2_qi6w1"]
+[ext_resource type="PackedScene" uid="uid://wqwwtr8de2e4" path="res://entities/enemies/slime_easy.tscn" id="2_wt16c"]
+
+[sub_resource type="Curve" id="Curve_fhh47"]
+_data = [Vector2(0, 0.076722), 0.0, 0.0, 0, 0, Vector2(0.980447, 1), 2.98475, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_pukah"]
+offsets = PackedFloat32Array(0, 0.866667, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.85, 1, 1, 1, 0)
+
+[node name="EnemySpawn" type="Node2D"]
+position = Vector2(74, 84)
+script = ExtResource("1_fvajr")
+enemy = ExtResource("2_wt16c")
+
+[node name="Particle" type="CPUParticles2D" parent="."]
+position = Vector2(0, -44)
+emitting = false
+amount = 500
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("2_qi6w1")
+emission_shape = 1
+emission_sphere_radius = 100.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+radial_accel_min = -30.0
+radial_accel_max = -20.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_fhh47")
+color = Color(0.776471, 0.654902, 0.0980392, 0.392157)
+color_ramp = SubResource("Gradient_pukah")

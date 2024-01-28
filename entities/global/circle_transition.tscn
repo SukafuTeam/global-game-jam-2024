@@ -5,6 +5,7 @@
 
 [node name="CircleTransition" type="CanvasLayer"]
 layer = 10
+follow_viewport_enabled = true
 script = ExtResource("1_l7y5y")
 
 [node name="Circle" type="Sprite2D" parent="."]

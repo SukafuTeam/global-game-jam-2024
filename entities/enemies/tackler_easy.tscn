@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5rfgqchl34yf"]
+
+[ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="1_fm5yi"]
+[ext_resource type="Script" path="res://scripts/enemies/tackler_enemy.gd" id="1_heed3"]
+[ext_resource type="Texture2D" uid="uid://epgvdejg0cxi" path="res://images/sprites/enemies/tackler/__0000_roxo_idle.png" id="3_3h88o"]
+[ext_resource type="Texture2D" uid="uid://dcqfcvykio24h" path="res://images/sprites/enemies/tackler/__0002_roxo_ataque.png" id="3_raoto"]
+[ext_resource type="Texture2D" uid="uid://q87d7o6n2fsg" path="res://images/sprites/enemies/tackler/__0005_roxo_costas.png" id="4_jdfmr"]
+[ext_resource type="Shader" path="res://shaders/flash_color.gdshader" id="5_cwtcc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hj51l"]
+resource_local_to_scene = true
+shader = ExtResource("5_cwtcc")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = null
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56qix"]
+radius = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8dfp5"]
+radius = 39.0128
+
+[node name="TacklerEasy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_heed3")
+move_accell = 20.0
+down_move_texture = ExtResource("3_3h88o")
+down_tackle_texture = ExtResource("3_raoto")
+up_texture = ExtResource("4_jdfmr")
+health = 6
+death_color = Color(0.356863, 0.388235, 0.596078, 1)
+
+[node name="BodyContainer" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="BodyContainer"]
+material = SubResource("ShaderMaterial_hj51l")
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(1.35133, 1.35133)
+texture = ExtResource("3_3h88o")
+offset = Vector2(0, -37)
+
+[node name="Shadow" type="Sprite2D" parent="BodyContainer"]
+modulate = Color(0, 0, 0, 0.392157)
+z_index = -1
+position = Vector2(0, -5)
+scale = Vector2(0.24, 0.0866667)
+texture = ExtResource("1_fm5yi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21)
+scale = Vector2(1.13646, 1.13646)
+shape = SubResource("CircleShape2D_56qix")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(1.21795, 1.21795)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_8dfp5")
+debug_color = Color(1, 1, 0, 0.419608)

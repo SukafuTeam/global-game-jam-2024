@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://bpil6umw6kka0"]
+
+[ext_resource type="PackedScene" uid="uid://cgbj60loxro2m" path="res://entities/weapons/drill_weapon.tscn" id="1_frvbt"]
+[ext_resource type="Script" path="res://scripts/data/weapon_data.gd" id="1_ja0lh"]
+
+[resource]
+script = ExtResource("1_ja0lh")
+damage = 2
+speed = 2
+entity = ExtResource("1_frvbt")
+spawn_offset = Vector2(2.08165e-12, -58)

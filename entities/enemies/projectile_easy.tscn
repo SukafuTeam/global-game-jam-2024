@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://dv81xs5paq0sr"]
+
+[ext_resource type="Script" path="res://scripts/enemies/projectile_enemy.gd" id="1_8c3w2"]
+[ext_resource type="Texture2D" uid="uid://bcwhmqp87ujf8" path="res://images/sprites/enemies/fuzzy/marrom/inimigo_marrom_cuspindo.png" id="1_o53cn"]
+[ext_resource type="Texture2D" uid="uid://d2jdp360y3uxu" path="res://images/sprites/enemies/fuzzy/marrom/inimigo_marrom_idle.png" id="2_4ui3d"]
+[ext_resource type="Shader" path="res://shaders/flash_color.gdshader" id="2_gp87m"]
+[ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="2_pqs7d"]
+[ext_resource type="Texture2D" uid="uid://ctmyou3mlj8gk" path="res://images/sprites/enemies/fuzzy/marrom/inimigo_marrom_costas.png" id="4_07l2g"]
+[ext_resource type="PackedScene" uid="uid://dvlmnc8b322kc" path="res://entities/enemies/projectile.tscn" id="5_pjo85"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wb6fv"]
+resource_local_to_scene = true
+shader = ExtResource("2_gp87m")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = null
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hrkyj"]
+radius = 18.1108
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1qpca"]
+radius = 66.7533
+
+[node name="ProjectileEasy" type="CharacterBody2D"]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_8c3w2")
+down_idle_texture = ExtResource("2_4ui3d")
+down_shoot_texture = ExtResource("1_o53cn")
+up_texture = ExtResource("4_07l2g")
+inhale_scale = 1.2
+projectile = ExtResource("5_pjo85")
+health = 5
+death_color = Color(0.6, 0.254902, 0.184314, 1)
+
+[node name="BodyContainer" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="BodyContainer"]
+material = SubResource("ShaderMaterial_wb6fv")
+position = Vector2(0, -87)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_o53cn")
+
+[node name="ProjectTileSpawn" type="Node2D" parent="BodyContainer/Body"]
+position = Vector2(43, 27)
+
+[node name="Shadow" type="Sprite2D" parent="BodyContainer"]
+modulate = Color(0, 0, 0, 0.392157)
+z_index = -1
+scale = Vector2(0.353333, 0.146667)
+texture = ExtResource("2_pqs7d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hrkyj")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -82)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_1qpca")
+debug_color = Color(1, 1, 0, 0.419608)
