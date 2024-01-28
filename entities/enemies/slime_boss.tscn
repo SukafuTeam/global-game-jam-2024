@@ -41,7 +41,7 @@ damage_mouth = ExtResource("4_sm87g")
 spawn_slime_range = Vector2(8, 2)
 weak_slime = ExtResource("5_olrma")
 strong_slime = ExtResource("6_taqr2")
-health = 100
+health = 70
 death_color = Color(0.592157, 1, 0.560784, 1)
 
 [node name="BodyContainer" type="Node2D" parent="."]

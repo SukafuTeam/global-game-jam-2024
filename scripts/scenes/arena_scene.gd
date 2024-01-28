@@ -96,10 +96,10 @@ func get_spawn_position() -> Vector2:
 func on_wave_clear():
 	current_wave += 1
 	
-	if current_wave > 4:
+	if current_wave > 2:
 		return
 	
-	if current_wave == 4:
+	if current_wave == 2:
 		ui.wave_progress.hide()
 		if Global.current_stage % 3 != 0:
 			end_stage()

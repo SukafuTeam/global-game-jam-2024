@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ciu4n5mm4yalf"]
+[gd_scene load_steps=27 format=3 uid="uid://ciu4n5mm4yalf"]
 
 [ext_resource type="Script" path="res://scripts/scenes/arena_scene.gd" id="1_pcskl"]
 [ext_resource type="Texture2D" uid="uid://dp8vxtp38jmwt" path="res://images/sprites/scenario/fundo.png" id="1_r57dj"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cqehjdnbe5m16" path="res://images/sprites/scenario/dentes_baixo.png" id="14_nwoqq"]
 [ext_resource type="PackedScene" uid="uid://bhdb8ylg22vmm" path="res://entities/enemies/slime_boss.tscn" id="15_kw4t1"]
 [ext_resource type="Texture2D" uid="uid://05msy4rdwegw" path="res://images/sprites/scenario/dentes_cima.png" id="15_yuhyt"]
+[ext_resource type="Script" path="res://scripts/Uvula.gd" id="20_6nxhl"]
 [ext_resource type="PackedScene" uid="uid://bebayrx7sxxvb" path="res://entities/enemies/projectile_boss.tscn" id="20_74pcy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtaio"]
@@ -36,8 +37,8 @@ radius = 44.0114
 y_sort_enabled = true
 script = ExtResource("1_pcskl")
 enemy_spawn = ExtResource("9_fpq5y")
-spawn_upper_limit = Vector2(-231, 333)
-spawn_lower_limit = Vector2(2112, 975)
+spawn_upper_limit = Vector2(-140, 395)
+spawn_lower_limit = Vector2(1970, 915)
 chest_scene = ExtResource("13_weifx")
 helicopter_scene = ExtResource("13_q6uos")
 game_bmg = ExtResource("5_xuqsr")
@@ -97,6 +98,9 @@ z_index = -1
 position = Vector2(-2, -886)
 texture = ExtResource("4_7so6q")
 offset = Vector2(2, 271)
+script = ExtResource("20_6nxhl")
+speed = 3.0
+strength = 5.0
 
 [node name="Filtro" type="Sprite2D" parent="Scenario"]
 z_index = 30

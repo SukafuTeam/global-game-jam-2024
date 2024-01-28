@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://j5s6of04as4u"]
+[gd_scene load_steps=10 format=3 uid="uid://j5s6of04as4u"]
 
 [ext_resource type="Texture2D" uid="uid://dsnj8eqvfpere" path="res://images/sprites/scenario/fim de fase/__0005_fio.png" id="1_e6v4r"]
 [ext_resource type="Script" path="res://scripts/helicopter.gd" id="1_itdj2"]
 [ext_resource type="Texture2D" uid="uid://c2544gkosmcgt" path="res://images/sprites/scenario/fim de fase/__0001_caixinha.png" id="2_658oh"]
+[ext_resource type="AudioStream" uid="uid://dw6qd0htvo3yr" path="res://sounds/sfx/joinha.ogg" id="2_beniv"]
 [ext_resource type="Texture2D" uid="uid://50v0wwfgvill" path="res://animations/Player/images/frente_sorriso.png" id="4_1qvvh"]
 [ext_resource type="PackedScene" uid="uid://dn63h0y4gy7fq" path="res://animations/Player/animation_player.tscn" id="4_b12ui"]
 [ext_resource type="Texture2D" uid="uid://11n6a5pdtd5v" path="res://images/sprites/scenario/fim de fase/__0004_mão.png" id="5_hu402"]
@@ -13,6 +14,7 @@ size = Vector2(94, 298)
 
 [node name="helicopter" type="Node2D"]
 script = ExtResource("1_itdj2")
+joinha_effect = ExtResource("2_beniv")
 
 [node name="Strand" type="Sprite2D" parent="."]
 z_index = -2
@@ -27,47 +29,28 @@ position = Vector2(-59, 773)
 scale = Vector2(0.883066, 0.883066)
 
 [node name="FrenteIdle" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Down" index="1"]
-position = Vector2(3.67102, -67.3686)
-rotation = -0.154585
-scale = Vector2(0.999999, 1)
-skew = 0.0
+position = Vector2(14, -66)
+scale = Vector2(1, 1)
 texture = ExtResource("4_1qvvh")
 
 [node name="Sobrancelha" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Down" index="2"]
-position = Vector2(13.7942, -112.477)
-rotation = 0.279855
-scale = Vector2(0.999999, 1)
-skew = -8.34465e-07
+position = Vector2(23, -109)
+scale = Vector2(1, 1)
 
 [node name="Oculos" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Down" index="3"]
-position = Vector2(13.9511, -91.2028)
-rotation = -0.0200879
-scale = Vector2(0.999999, 1)
-skew = -3.57628e-07
+position = Vector2(25, -87.0001)
 
 [node name="Sobrancelha" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Up" index="0"]
-position = Vector2(12.8331, -112.753)
-rotation = 0.279855
-scale = Vector2(0.999999, 1)
-skew = -8.34465e-07
+scale = Vector2(1, 1)
 
 [node name="Oculos" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Up" index="1"]
-position = Vector2(11.1969, -93.5297)
-rotation = 0.113485
-scale = Vector2(0.999999, 1)
-skew = -5.96046e-07
+scale = Vector2(1, 1)
 
 [node name="CostasIdle" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Up" index="2"]
-position = Vector2(19.6342, -68.8441)
-rotation = -0.154585
-scale = Vector2(0.999999, 1)
-skew = 0.0
+scale = Vector2(1, 1)
 
 [node name="Bunda" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Up" index="4"]
-position = Vector2(-30.3478, -6.40369)
-rotation = -0.154585
-scale = Vector2(0.999999, 1)
-skew = 0.0
+scale = Vector2(1, 1)
 
 [node name="Hand1" type="Sprite2D" parent="Strand"]
 z_index = -1

@@ -11,7 +11,11 @@ class_name Ui
 @export var hearts: Array[TextureRect] = []
 @export var manas: Array[TextureRect] = []
 
+@onready var stage_counter: Label = $"Container/StageCounterContainer/NumberContainer/Stage Counter2"
+
 func _ready():
+	
+	stage_counter.text = str(Global.current_stage)
 	
 	weapon_icon.texture = Global.weapons[Global.weapon_index].icon
 	if Global.secondary_index == -1:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjqlx7sbk62ii"]
+[gd_scene load_steps=30 format=3 uid="uid://bjqlx7sbk62ii"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_pd8f5"]
 [ext_resource type="Texture2D" uid="uid://dqkdtbiv52ogm" path="res://images/ui/UIgame/Raizes/raizCima.png" id="2_p54d0"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://bfci6g23y6ecv" path="res://images/ui/iconsArmas/iconSecPoca.png" id="22_d10qt"]
 [ext_resource type="Texture2D" uid="uid://dwkp2yv3c76yb" path="res://images/ui/UIgame/Barra waves/loadingBarWave.png" id="22_f0wdp"]
 [ext_resource type="Texture2D" uid="uid://dobral8cy5cqp" path="res://images/ui/UIgame/Barra waves/waveAlert.png" id="26_0eor0"]
+[ext_resource type="FontFile" uid="uid://bulp21dtew80d" path="res://fonts/Brootahh-Regular.ttf" id="29_3ba8g"]
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("hearts", "manas")]
 script = ExtResource("1_pd8f5")
@@ -355,3 +356,75 @@ offset_top = -39.0
 offset_right = 589.0
 offset_bottom = 37.0
 texture = ExtResource("26_0eor0")
+
+[node name="StageCounterContainer" type="TextureRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -272.0
+offset_top = 78.0
+offset_right = 595.0
+offset_bottom = 138.0
+grow_horizontal = 0
+scale = Vector2(1.04186, 1.04186)
+texture = ExtResource("21_m04tt")
+
+[node name="Stage Label" type="Label" parent="Container/StageCounterContainer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -863.161
+offset_top = -3.83928
+offset_right = -711.161
+offset_bottom = 91.1607
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.374954, 0.115895, 0.229865, 1)
+theme_override_fonts/font = ExtResource("29_3ba8g")
+theme_override_font_sizes/font_size = 35
+text = "Stage"
+horizontal_alignment = 1
+
+[node name="NumberContainer" type="TextureRect" parent="Container/StageCounterContainer"]
+layout_mode = 1
+offset_left = 139.714
+offset_top = -14.9461
+offset_right = 218.714
+offset_bottom = 61.0539
+scale = Vector2(1.085, 1.085)
+texture = ExtResource("26_0eor0")
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="Container/StageCounterContainer/NumberContainer"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 56.0
+offset_bottom = 62.0
+
+[node name="ColorRect2" type="ColorRect" parent="Container/StageCounterContainer/NumberContainer"]
+layout_mode = 0
+offset_left = 25.7536
+offset_top = 15.572
+offset_right = 48.7536
+offset_bottom = 44.572
+
+[node name="Stage Counter2" type="Label" parent="Container/StageCounterContainer/NumberContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -32.0
+offset_right = 31.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("29_3ba8g")
+theme_override_font_sizes/font_size = 40
+text = "99"
+horizontal_alignment = 1

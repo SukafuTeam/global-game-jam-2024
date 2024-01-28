@@ -41,6 +41,9 @@ var secondary_index: int:
 	get:
 		return secondary_index
 
+var last_weapon_selected: int = -1
+var last_secodnary_selected: int = -1
+
 var weapons: Array[WeaponData] = [
 	preload("res://data/weapons/sword_data.tres"),
 	preload("res://data/weapons/axe_data.tres"),

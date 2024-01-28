@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_cti33")
 icon = ExtResource("2_ruv7t")
-damage = 1
+damage = 3
 speed = 4
 entity = ExtResource("1_0vbhd")
 spawn_offset = Vector2(2.08165e-12, -55)

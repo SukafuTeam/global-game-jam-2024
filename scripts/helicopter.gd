@@ -13,6 +13,8 @@ extends Node2D
 @onready var trigger: Area2D = $Trigger
 var finished_animation: bool
 
+@export var joinha_effect: AudioStream
+
 func _ready():
 	animation.play("attack_down")
 	player_animation.hide()
@@ -60,7 +62,10 @@ func on_area_entered(area):
 	)
 	tween.tween_interval(1.0)
 	tween.tween_property(strand, "position:y", -200, 1.0)
-	tween.tween_callback(func(): hand2.show())
+	tween.tween_callback(func():
+		SoundController.play_sfx(joinha_effect, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
+		hand2.show()
+	)
 	tween.tween_interval(1.0)
 	tween.tween_callback(func():
 		var origin = pos.global_position

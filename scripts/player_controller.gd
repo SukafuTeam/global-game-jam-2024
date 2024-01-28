@@ -66,6 +66,9 @@ var flash_intensity: float
 @export var attack_buffer_time: float = 0.1
 var current_attack_buffer_time: float
 
+
+var time_dead: float
+
 func _ready():
 	can_move = true
 	Global.player = self
@@ -82,13 +85,14 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_key_label_pressed(KEY_1):
-		Global.equip_secondary(3)
-	
 	current_attack_buffer_time -= delta
 	
 	if Global.health == 0:
+		time_dead += delta
 		last_input = Vector2(1,1)
+		if time_dead < 3:
+			return
+		
 		if Input.is_action_just_pressed("attack"):
 			animation.process_mode = Node.PROCESS_MODE_DISABLED
 			Global.reset_stats()
