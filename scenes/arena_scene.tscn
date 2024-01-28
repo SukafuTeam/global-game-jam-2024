@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ewa70pn7txf2" path="res://images/sprites/scenario/dentes 2.png" id="3_qosaq"]
 [ext_resource type="Texture2D" uid="uid://chawcea4qo6wn" path="res://images/sprites/scenario/dentes 1.png" id="4_0o3ap"]
 [ext_resource type="Texture2D" uid="uid://b6mh2mlhrbafj" path="res://images/sprites/scenario/úvula.png" id="4_7so6q"]
-[ext_resource type="AudioStream" uid="uid://bgyb4ou7vmsaj" path="res://sounds/bmg/loop.ogg" id="5_6pcj1"]
+[ext_resource type="AudioStream" uid="uid://bj1ohcni237ay" path="res://sounds/bmg/full_song.ogg" id="5_xuqsr"]
 [ext_resource type="Texture2D" uid="uid://x7b72w3ayowc" path="res://images/sprites/scenario/filtro.png" id="6_k3qhe"]
 [ext_resource type="PackedScene" uid="uid://bx1df7bsyilqu" path="res://entities/boss_spawn.tscn" id="7_exe7a"]
 [ext_resource type="AudioStream" uid="uid://c5ofusjepacql" path="res://sounds/bmg/boss.ogg" id="7_kqgr2"]
@@ -40,7 +40,7 @@ spawn_upper_limit = Vector2(-231, 333)
 spawn_lower_limit = Vector2(2112, 975)
 chest_scene = ExtResource("13_weifx")
 helicopter_scene = ExtResource("13_q6uos")
-game_bmg = ExtResource("5_6pcj1")
+game_bmg = ExtResource("5_xuqsr")
 boss_bmg = ExtResource("7_kqgr2")
 victory_bmg = ExtResource("8_4s71f")
 slime_boss = ExtResource("15_kw4t1")
@@ -105,7 +105,7 @@ scale = Vector2(1, 1.03211)
 texture = ExtResource("6_k3qhe")
 
 [node name="Player" parent="." instance=ExtResource("2_eae65")]
-position = Vector2(960, 540)
+position = Vector2(960, 623)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 process_mode = 3

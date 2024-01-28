@@ -109,6 +109,8 @@ func take_damage(damage: int, attacker_position: Vector2):
 	
 	health -= damage
 	
+	SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
+	
 	var health_percent = inverse_lerp(0, initial_health, health)		 
 	scale = Vector2(
 		lerp(minimum_scale, 1.0, health_percent),

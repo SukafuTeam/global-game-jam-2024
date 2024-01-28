@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgbj60loxro2m"]
+[gd_scene load_steps=7 format=3 uid="uid://cgbj60loxro2m"]
 
 [ext_resource type="Texture2D" uid="uid://bilgiyxochn7e" path="res://images/sprites/weapons/__0003_broca_base_maos.png" id="1_42kuw"]
 [ext_resource type="Script" path="res://scripts/weapons/drill_weapon.gd" id="1_tvr25"]
 [ext_resource type="Texture2D" uid="uid://3d76cbtovs8p" path="res://images/sprites/weapons/__0004_broca_idle.png" id="2_domsh"]
 [ext_resource type="Texture2D" uid="uid://c0kvxufjxbjqt" path="res://images/sprites/weapons/__0005_broca_on.png" id="3_3jv0c"]
+[ext_resource type="AudioStream" uid="uid://dnt0j22tqb5q6" path="res://sounds/sfx/drill.ogg" id="5_fjru5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ietmd"]
 size = Vector2(151, 142)
@@ -49,3 +50,6 @@ position = Vector2(-71.6464, -2.55268)
 rotation = -0.00881857
 texture = ExtResource("2_domsh")
 offset = Vector2(26.081, 2.29181)
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fjru5")

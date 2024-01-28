@@ -156,6 +156,8 @@ func take_damage(damage: int, attacker_position: Vector2):
 	move_direction = (attacker_position - global_position).normalized()
 	state = State.DAMAGE
 
+	SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
+
 func update_animation():
 	if abs(move_direction.x) > 0.1:
 		body_container.scale.x = 1 if move_direction.x >= 0 else -1

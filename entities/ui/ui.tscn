@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bjqlx7sbk62ii"]
+[gd_scene load_steps=29 format=3 uid="uid://bjqlx7sbk62ii"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_pd8f5"]
 [ext_resource type="Texture2D" uid="uid://dqkdtbiv52ogm" path="res://images/ui/UIgame/Raizes/raizCima.png" id="2_p54d0"]
@@ -15,7 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dcx2tscgdjohs" path="res://images/ui/UIgame/Hud/dente_5.png" id="13_jpa16"]
 [ext_resource type="Texture2D" uid="uid://3db4tcoplxlh" path="res://images/ui/UIgame/Hud/manaIcon.png" id="14_sb80o"]
 [ext_resource type="Texture2D" uid="uid://c1ob3lg3b6joo" path="res://images/ui/UIgame/Raizes/raizDireita.png" id="15_uso3j"]
-[ext_resource type="Texture2D" uid="uid://beno8pgdvj43s" path="res://images/ui/UIgame/Molduras/molduraPrimaria.png" id="16_kysd8"]
+[ext_resource type="Texture2D" uid="uid://ddhr5x6m2j8aj" path="res://images/ui/UIgame/Molduras/molduraPassiva.png" id="16_ynp21"]
+[ext_resource type="Texture2D" uid="uid://bvdote56dt573" path="res://images/ui/iconsArmas/iconEspada.png" id="17_208yb"]
 [ext_resource type="Texture2D" uid="uid://bi22hn5ic5p6b" path="res://images/ui/UIgame/Molduras/molduraSecundaria.png" id="17_344m5"]
 [ext_resource type="Texture2D" uid="uid://bhjcjptchrsv2" path="res://images/ui/UIgame/Molduras/teclaZ.png" id="17_jkrse"]
 [ext_resource type="Texture2D" uid="uid://tphad3epkv8u" path="res://images/ui/UIgame/Molduras/consoleBaixo.png" id="17_opgw0"]
@@ -24,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dsta1agqlgpqr" path="res://images/ui/UIgame/Molduras/consoleCima.png" id="19_wicth"]
 [ext_resource type="Texture2D" uid="uid://b6ewk84ojr6ed" path="res://images/ui/UIgame/Raizes/raizBaixo.png" id="20_mwu3x"]
 [ext_resource type="Texture2D" uid="uid://ctsqqhncllbp3" path="res://images/ui/UIgame/Barra waves/barraWave.png" id="21_m04tt"]
+[ext_resource type="Texture2D" uid="uid://bfci6g23y6ecv" path="res://images/ui/iconsArmas/iconSecPoca.png" id="22_d10qt"]
 [ext_resource type="Texture2D" uid="uid://dwkp2yv3c76yb" path="res://images/ui/UIgame/Barra waves/loadingBarWave.png" id="22_f0wdp"]
 [ext_resource type="Texture2D" uid="uid://dobral8cy5cqp" path="res://images/ui/UIgame/Barra waves/waveAlert.png" id="26_0eor0"]
 
@@ -247,7 +249,13 @@ offset_left = 52.0
 offset_top = 170.0
 offset_right = 222.0
 offset_bottom = 320.0
-texture = ExtResource("16_kysd8")
+texture = ExtResource("16_ynp21")
+
+[node name="WeaponIcon" type="TextureRect" parent="Container/RaizItem/WeaponContainer"]
+layout_mode = 0
+offset_right = 171.0
+offset_bottom = 150.0
+texture = ExtResource("17_208yb")
 
 [node name="Input" type="TextureRect" parent="Container/RaizItem/WeaponContainer"]
 layout_mode = 0
@@ -267,6 +275,12 @@ offset_top = 368.0
 offset_right = 230.0
 offset_bottom = 518.0
 texture = ExtResource("17_344m5")
+
+[node name="SecondaryIcon" type="TextureRect" parent="Container/RaizItem/SecundaryContainer"]
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 150.0
+texture = ExtResource("22_d10qt")
 
 [node name="Input" type="TextureRect" parent="Container/RaizItem/SecundaryContainer"]
 layout_mode = 0

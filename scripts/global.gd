@@ -1,5 +1,8 @@
 extends Node
 
+signal weapon_changed(weapon: WeaponData)
+signal secondary_changed(secondary: SecondaryData)
+
 signal enemy_killed(new_amount)
 signal wave_cleared()
 signal health_changed(new_value)
@@ -24,8 +27,19 @@ var mana: int:
 var damage: int
 var speed: int
 
-var weapon_index: int
-var secondary_index: int
+var weapon_index: int:
+	set(value):
+		weapon_changed.emit(weapons[value])
+		weapon_index = value
+	get:
+		return weapon_index
+		
+var secondary_index: int:
+	set(value):
+		secondary_changed.emit(secondaries[value])
+		secondary_index = value
+	get:
+		return secondary_index
 
 var weapons: Array[WeaponData] = [
 	preload("res://data/weapons/sword_data.tres"),
@@ -61,7 +75,7 @@ func reset_stats():
 	damage = 0
 	speed = 0
 	weapon_index = 0
-	secondary_index = 3
+	secondary_index = -1
 	current_stage = 1
 	
 func spawn_enemy_death(position: Vector2, new_color: Color):
@@ -88,8 +102,7 @@ func equip_weapon(index):
 	player.add_child(instance)
 	instance.position = weapon_data.spawn_offset
 	player.weapon = instance
-	
-	# TODO: update UI
+	weapon_index = index
 
 func equip_secondary(index):
 	if index  == -1:
@@ -102,9 +115,9 @@ func equip_secondary(index):
 	var instance = secondary_data.scene.instantiate() as SecondaryItem
 	player.add_child(instance)
 	player.secondary = instance
-	#TODO Update UI
+	secondary_index = index
 	
-func get_random_sword():
+func get_random_weapon():
 	var selected = weapon_index
 	while selected == weapon_index:
 		selected = randi_range(0, weapons.size()-1)

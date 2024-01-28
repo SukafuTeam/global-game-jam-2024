@@ -3698,28 +3698,20 @@ internal_vertex_count = 6
 
 [node name="FrenteIdle" type="Sprite2D" parent="Sprites/Down"]
 use_parent_material = true
-position = Vector2(6.74716, -56.2758)
-rotation = 0.0795891
-scale = Vector2(0.998803, 0.924682)
-skew = 0.0201663
+position = Vector2(14, -66)
 texture = ExtResource("2_ruhna")
 metadata/_edit_lock_ = true
 
 [node name="Sobrancelha" type="Sprite2D" parent="Sprites/Down"]
 use_parent_material = true
-position = Vector2(13.3464, -93.2362)
-rotation = -0.255054
-scale = Vector2(0.996034, 0.927664)
-skew = -0.0359654
+position = Vector2(23, -109)
 texture = ExtResource("3_g4p5k")
 metadata/_edit_lock_ = true
 
 [node name="Oculos" type="Sprite2D" parent="Sprites/Down"]
 use_parent_material = true
-position = Vector2(21.2516, -75.1885)
-rotation = 0.0961807
-scale = Vector2(0.998446, 0.925067)
-skew = 0.0229182
+position = Vector2(25, -87)
+rotation = -0.133573
 texture = ExtResource("4_mge50")
 metadata/_edit_lock_ = true
 
@@ -3729,26 +3721,17 @@ use_parent_material = true
 
 [node name="Sobrancelha" type="Sprite2D" parent="Sprites/Up"]
 use_parent_material = true
-position = Vector2(12.3825, -92.9849)
-rotation = -0.255054
-scale = Vector2(0.996034, 0.927664)
-skew = -0.0359654
+position = Vector2(22, -109)
 texture = ExtResource("3_g4p5k")
 
 [node name="Oculos" type="Sprite2D" parent="Sprites/Up"]
 use_parent_material = true
-position = Vector2(18.8232, -77.6357)
-rotation = 0.22036
-scale = Vector2(0.994386, 0.92943)
-skew = 0.0422593
+position = Vector2(22, -89)
 texture = ExtResource("4_mge50")
 
 [node name="CostasIdle" type="Sprite2D" parent="Sprites/Up"]
 use_parent_material = true
-position = Vector2(22.5853, -54.0851)
-rotation = 0.0795891
-scale = Vector2(0.998803, 0.924682)
-skew = 0.0201663
+position = Vector2(30, -65)
 texture = ExtResource("5_63pcx")
 
 [node name="CorpoUp" type="Polygon2D" parent="Sprites/Up"]
@@ -3764,16 +3747,14 @@ internal_vertex_count = 4
 
 [node name="Bunda" type="Sprite2D" parent="Sprites/Up"]
 use_parent_material = true
-position = Vector2(-32.0028, 5.85102)
-rotation = -0.0372542
-scale = Vector2(1, 1.08477)
-skew = 0.000213385
+position = Vector2(-29, -11)
 texture = ExtResource("7_a3svw")
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_rwgy4")
 }
+autoplay = "idle_down"
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 

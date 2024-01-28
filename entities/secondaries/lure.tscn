@@ -11,6 +11,7 @@ top_level = true
 y_sort_enabled = true
 position = Vector2(131, 224)
 script = ExtResource("1_s4o3x")
+damage_cooldown_time = 1.0
 
 [node name="BodyContainer" type="Marker2D" parent="."]
 

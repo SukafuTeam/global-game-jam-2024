@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b33v6w7we3vdq"]
+[gd_scene load_steps=11 format=3 uid="uid://b33v6w7we3vdq"]
 
 [ext_resource type="Script" path="res://scripts/enemies/shield_enemy.gd" id="1_agaym"]
 [ext_resource type="Texture2D" uid="uid://dm7eskuoip5jf" path="res://images/sprites/enemies/shield/__0002_mascara_azul_frente.png" id="2_m4p8h"]
 [ext_resource type="Texture2D" uid="uid://brjv5u78bbhqr" path="res://images/sprites/enemies/shield/__0004_mascara_azul_costas.png" id="3_mj21d"]
+[ext_resource type="AudioStream" uid="uid://cuh2dm7e02nec" path="res://sounds/sfx/shield_contact.ogg" id="4_gbijb"]
 [ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="4_lg5c5"]
 [ext_resource type="Shader" path="res://shaders/flash_color.gdshader" id="5_tg15g"]
 [ext_resource type="Texture2D" uid="uid://bet5sky5o2fij" path="res://images/sprites/enemies/shield/Pisca.png" id="6_y4yyo"]
@@ -32,6 +33,7 @@ swing_force = 4.0
 blink_times = 3
 down_texture = ExtResource("2_m4p8h")
 up_texture = ExtResource("3_mj21d")
+deny_sfx = ExtResource("4_gbijb")
 health = 10
 death_color = Color(0, 0.658824, 0.647059, 1)
 

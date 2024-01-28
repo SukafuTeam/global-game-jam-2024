@@ -7,6 +7,6 @@
 script = ExtResource("1_37hqr")
 name = "Zack Blue"
 scene = ExtResource("1_firin")
-cost = 3
+cost = 2
 preffered_stage = 4
-stage_decay = 4
+stage_decay = 3

@@ -14,6 +14,7 @@ var queue: Array[SoundEffect] = []
 var current_bmg_name: String = ""
 
 func _ready():
+	bmg_player.volume_db = linear_to_db(0.8)
 	# For each possible effect we can play
 	for i in num_players:
 		# Create a new player

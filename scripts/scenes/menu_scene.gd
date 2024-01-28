@@ -16,6 +16,7 @@ func _process(delta):
 		return
 	
 	if Input.is_action_just_pressed("attack"):
-		var pos = Vector2(960, 540)
+		var origin = Vector2(170, 600)
+		var target = Vector2(960, 540)
 		
-		CircleTransition.transtition(pos, pos, "res://scenes/arena_scene.tscn")
+		CircleTransition.transtition(origin, target, "res://scenes/arena_scene.tscn")

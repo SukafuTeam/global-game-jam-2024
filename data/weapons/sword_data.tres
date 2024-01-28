@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://ekk2e8bgjkga"]
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://ekk2e8bgjkga"]
 
 [ext_resource type="PackedScene" uid="uid://cikwsnyq8tae4" path="res://entities/weapons/sword_weapon.tscn" id="1_le7c3"]
 [ext_resource type="Script" path="res://scripts/data/weapon_data.gd" id="2_j3eku"]
+[ext_resource type="Texture2D" uid="uid://bvdote56dt573" path="res://images/ui/iconsArmas/iconEspada.png" id="2_y13qu"]
 
 [resource]
 script = ExtResource("2_j3eku")
+icon = ExtResource("2_y13qu")
 damage = 2
 speed = 3
 entity = ExtResource("1_le7c3")

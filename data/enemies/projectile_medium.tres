@@ -8,5 +8,5 @@ script = ExtResource("1_y16ju")
 name = "Fuzzy Green"
 scene = ExtResource("1_pijfb")
 cost = 5
-preffered_stage = 7
-stage_decay = 4
+preffered_stage = 5
+stage_decay = 5

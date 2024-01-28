@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3gejwsryykxq"]
+
+[ext_resource type="Script" path="res://scripts/upgrade_options.gd" id="1_cko21"]
+[ext_resource type="Texture2D" uid="uid://bvdote56dt573" path="res://images/ui/iconsArmas/iconEspada.png" id="2_jp7ir"]
+[ext_resource type="Texture2D" uid="uid://ddkdux0nx76wg" path="res://images/ui/iconsArmas/iconSecShield.png" id="3_3q07e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npb3g"]
+size = Vector2(140, 145)
+
+[node name="Options" type="Node2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+script = ExtResource("1_cko21")
+
+[node name="WeaponChoice" type="Area2D" parent="."]
+position = Vector2(-300, 2.08165e-12)
+scale = Vector2(0.8, 0.8)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponChoice"]
+shape = SubResource("RectangleShape2D_npb3g")
+
+[node name="WeaponChoise" type="Sprite2D" parent="WeaponChoice"]
+texture = ExtResource("2_jp7ir")
+
+[node name="SecondaryChoice" type="Area2D" parent="."]
+position = Vector2(300, 2.08165e-12)
+scale = Vector2(0.8, 0.8)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondaryChoice"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_npb3g")
+
+[node name="SecondaryChoise" type="Sprite2D" parent="SecondaryChoice"]
+texture = ExtResource("3_3q07e")
+
+[node name="OriginPoint" type="Marker2D" parent="."]
+
+[node name="WeaponChoicePos" type="Marker2D" parent="."]
+position = Vector2(-330, 200)
+
+[node name="SecondaryChoicePos" type="Marker2D" parent="."]
+position = Vector2(330, 200)

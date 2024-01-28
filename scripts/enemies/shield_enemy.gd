@@ -24,6 +24,8 @@ var flash_intensity: float
 @export var down_texture: Texture
 @export var up_texture: Texture
 
+@export var deny_sfx: AudioStream
+
 var tween: Tween
 
 var state: State:
@@ -120,6 +122,10 @@ func take_damage(damage: int, attacker_position: Vector2):
 			0.0,
 			current_state_time
 		).set_ease(Tween.EASE_OUT)
+		SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
+	else:
+		SoundController.play_sfx(deny_sfx, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
+		
 	
 	var hit_direction = (attacker_position - global_position).normalized()
 	current_state_time = recoil_time

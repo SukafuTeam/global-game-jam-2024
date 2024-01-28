@@ -205,6 +205,7 @@ func take_damage(damage: int, attacker_position: Vector2):
 	
 	current_damage_cooldown = damage_cooldown
 	health -= damage
+	SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
 	
 	flash_intensity = 1.0
 	var tween = create_tween()

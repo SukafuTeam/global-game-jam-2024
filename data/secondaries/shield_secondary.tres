@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="SecondaryData" load_steps=3 format=3 uid="uid://s5iewsndaoi1"]
+[gd_resource type="Resource" script_class="SecondaryData" load_steps=4 format=3 uid="uid://s5iewsndaoi1"]
 
+[ext_resource type="Texture2D" uid="uid://ddkdux0nx76wg" path="res://images/ui/iconsArmas/iconSecShield.png" id="1_3ni7o"]
 [ext_resource type="Script" path="res://scripts/data/secondary_data.gd" id="1_ijhm4"]
 [ext_resource type="PackedScene" uid="uid://br025l7m87lny" path="res://entities/secondaries/shield_item.tscn" id="1_qlk2o"]
 
 [resource]
 script = ExtResource("1_ijhm4")
+icon = ExtResource("1_3ni7o")
 name = "Shield"
 scene = ExtResource("1_qlk2o")

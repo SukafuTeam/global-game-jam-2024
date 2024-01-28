@@ -206,3 +206,5 @@ func take_damage(damage: int, attacker_position: Vector2):
 	health -= damage
 	last_input = (attacker_position - global_position).normalized()
 	state = State.DAMAGE
+	
+	SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))

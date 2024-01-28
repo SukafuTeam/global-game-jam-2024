@@ -6,15 +6,15 @@ extends Node2D
 @export var budget_per_wave: int = 2
 
 
-func _ready():
-	for i in range(1,30):
-		for j in range(1,3):
-			var wave = generate_wave(i, j)
-			
-			var value = "Stage: " + str(i) + " Wave: " + str(j) + " | "
-			for enemy in wave:
-				value += enemy.name + " | "
-			print(value)
+#func _ready():
+	#for i in range(1,30):
+		#for j in range(1,3):
+			#var wave = generate_wave(i, j)
+			#
+			#var value = "Stage: " + str(i) + " Wave: " + str(j) + " | "
+			#for enemy in wave:
+				#value += enemy.name + " | "
+			#print(value)
 
 
 func generate_wave(current_stage, current_wave) -> Array[EnemyData]:

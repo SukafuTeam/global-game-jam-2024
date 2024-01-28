@@ -8,5 +8,5 @@ script = ExtResource("1_2pxsl")
 name = "Slime Yellow"
 scene = ExtResource("1_8kab6")
 cost = 2
-preffered_stage = 5
-stage_decay = 5
+preffered_stage = 3
+stage_decay = 3

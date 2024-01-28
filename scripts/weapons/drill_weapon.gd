@@ -1,9 +1,12 @@
 extends Weapon
+class_name DrillWeapon
 
 @onready var sprite_root: Node2D = $SpriteRoot
 
 @onready var drill_tip: Sprite2D = $SpriteRoot/DrillBase/DrillTip
 @onready var hurtbox: Area2D = $SpriteRoot/HurtBox
+
+@onready var player: AudioStreamPlayer = $Sound
 
 @export var cooldown_time: float = 0.3
 var current_cooldown_time: float
@@ -72,6 +75,9 @@ func attack(direction: Vector2):
 	sprite_root.show()
 	drill_tip.modulate = Color.WHITE
 	
+	player.pitch_scale = randf_range(0.9, 1.1)
+	player.play()
+	
 func get_move_velocity() -> Vector2:
 	var input = Input.get_vector("left", "right", "up", "down")
 	return input * move_speed
@@ -92,3 +98,4 @@ func finish_attack():
 	hurtbox.hide()
 	sprite_root.hide()
 	current_cooldown_time = cooldown_time
+	player.stop()

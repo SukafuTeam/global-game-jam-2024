@@ -61,6 +61,7 @@ var flash_intensity: float
 @export var step_effect: AudioStream
 @export var attack_effect: AudioStream
 @export var damage_effect: AudioStream
+@export var secondary_effect: AudioStream
 
 @export var attack_buffer_time: float = 0.1
 var current_attack_buffer_time: float
@@ -81,6 +82,9 @@ func _ready():
 
 
 func _process(delta):
+	if Input.is_key_label_pressed(KEY_1):
+		Global.equip_secondary(3)
+	
 	current_attack_buffer_time -= delta
 	
 	if Global.health == 0:
@@ -131,6 +135,8 @@ func handle_idle() -> State:
 		
 	if Input.is_action_just_pressed("item") and can_secondary:
 		secondary.use(global_position)
+		SoundController.play_sfx(secondary_effect, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
+		
 	
 	velocity = velocity.move_toward(Vector2.ZERO, move_accel * 2)
 	
@@ -232,7 +238,8 @@ func enter_state(new_state):
 				return
 			weapon.attack(last_input)
 			player_animator.set_strength()
-			SoundController.play_sfx(attack_effect, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
+			if !(weapon is DrillWeapon):
+				SoundController.play_sfx(attack_effect, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
 		State.DAMAGE:
 			player_animator.set_pain()
 			current_state_time = recoil_time

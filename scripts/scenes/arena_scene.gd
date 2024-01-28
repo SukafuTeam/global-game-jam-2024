@@ -40,7 +40,7 @@ func _ready():
 			return
 		
 		var value = (current_wave - 1) * 33
-		var value_per_enemy = 33 / total_enemies
+		var value_per_enemy = 33.0 / total_enemies
 		var enemies_killed = total_enemies - enemies_alive
 		
 		value += value_per_enemy * enemies_killed
@@ -96,10 +96,10 @@ func get_spawn_position() -> Vector2:
 func on_wave_clear():
 	current_wave += 1
 	
-	if current_wave > 2:
+	if current_wave > 4:
 		return
 	
-	if current_wave == 2:
+	if current_wave == 4:
 		ui.wave_progress.hide()
 		if Global.current_stage % 3 != 0:
 			end_stage()
@@ -151,6 +151,8 @@ func add_boss():
 	boss.dead.connect(func():
 		await get_tree().create_timer(1.0).timeout
 		limpo.show()
+		Global.health = 5
+		Global.mana = 5
 		WhiteFade.fade_out()
 		await get_tree().create_timer(2.0).timeout
 		end_stage()

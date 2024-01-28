@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="SecondaryData" load_steps=3 format=3 uid="uid://cgh38gfue1qxu"]
+[gd_resource type="Resource" script_class="SecondaryData" load_steps=4 format=3 uid="uid://cgh38gfue1qxu"]
 
 [ext_resource type="Script" path="res://scripts/data/secondary_data.gd" id="1_4rqat"]
+[ext_resource type="Texture2D" uid="uid://bfci6g23y6ecv" path="res://images/ui/iconsArmas/iconSecPoca.png" id="1_8ei43"]
 [ext_resource type="PackedScene" uid="uid://bu3k5uuyeab7e" path="res://entities/secondaries/acid_container.tscn" id="1_id5i8"]
 
 [resource]
 script = ExtResource("1_4rqat")
+icon = ExtResource("1_8ei43")
 name = "Acid"
 scene = ExtResource("1_id5i8")

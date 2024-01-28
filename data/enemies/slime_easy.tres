@@ -9,4 +9,4 @@ name = "Slime Green"
 scene = ExtResource("1_lof4n")
 cost = 1
 preffered_stage = 1
-stage_decay = 5
+stage_decay = 2
