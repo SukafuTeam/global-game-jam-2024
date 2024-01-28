@@ -9,4 +9,4 @@ name = "Gurguba Green"
 scene = ExtResource("1_osx8v")
 cost = 2
 preffered_stage = 2
-stage_decay = 4
+stage_decay = 5

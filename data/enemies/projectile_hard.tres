@@ -9,4 +9,4 @@ name = "Fuzzy Red"
 scene = ExtResource("1_7ub02")
 cost = 7
 preffered_stage = 7
-stage_decay = 6
+stage_decay = 7

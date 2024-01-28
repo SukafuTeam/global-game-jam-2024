@@ -2,19 +2,19 @@ extends Node2D
 
 @export var enemies: Array[EnemyData]
 
-@export var budget_per_level: int = 4
-@export var budget_per_wave: int = 2
+@export var budget_per_level: int = 10
+@export var budget_per_wave: int = 5
 
 
-#func _ready():
-	#for i in range(1,30):
-		#for j in range(1,3):
-			#var wave = generate_wave(i, j)
-			#
-			#var value = "Stage: " + str(i) + " Wave: " + str(j) + " | "
-			#for enemy in wave:
-				#value += enemy.name + " | "
-			#print(value)
+func _ready():
+	for i in range(1,30):
+		for j in range(1,3):
+			var wave = generate_wave(i, j)
+			
+			var value = "Stage: " + str(i) + " Wave: " + str(j) + " | "
+			for enemy in wave:
+				value += enemy.name + " | "
+			print(value)
 
 
 func generate_wave(current_stage, current_wave) -> Array[EnemyData]:
@@ -42,7 +42,7 @@ func generate_wave(current_stage, current_wave) -> Array[EnemyData]:
 	
 	# Filter out all enemies who cost more than 30% of the current budget
 	# This is so we guarante at least 4 enemies per wave
-	enemy_pool = enemy_pool.filter(func(enemy: EnemyData): return enemy.cost <= (total_budget * 0.3))
+	enemy_pool = enemy_pool.filter(func(enemy: EnemyData): return enemy.cost <= (total_budget * 0.2))
 	
 	# Starts process to create wave
 	var wave: Array[EnemyData] = []

@@ -9,4 +9,4 @@ name = "Smoker Green"
 scene = ExtResource("1_7xw18")
 cost = 3
 preffered_stage = 4
-stage_decay = 4
+stage_decay = 5
