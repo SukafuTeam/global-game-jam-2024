@@ -71,6 +71,10 @@ func _ready():
 	process_priority = -1000
 	reset_stats()
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+func _process(_delta):
+	if Input.is_action_just_pressed("reset"):
+		Transition.change_scene("res://scenes/menu_scene.tscn")
 
 func reset_stats():
 	health = 5

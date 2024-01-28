@@ -29,28 +29,10 @@ position = Vector2(-59, 773)
 scale = Vector2(0.883066, 0.883066)
 
 [node name="FrenteIdle" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Down" index="1"]
-position = Vector2(14, -66)
-scale = Vector2(1, 1)
 texture = ExtResource("4_1qvvh")
-
-[node name="Sobrancelha" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Down" index="2"]
-position = Vector2(23, -109)
-scale = Vector2(1, 1)
 
 [node name="Oculos" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Down" index="3"]
 position = Vector2(25, -87.0001)
-
-[node name="Sobrancelha" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Up" index="0"]
-scale = Vector2(1, 1)
-
-[node name="Oculos" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Up" index="1"]
-scale = Vector2(1, 1)
-
-[node name="CostasIdle" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Up" index="2"]
-scale = Vector2(1, 1)
-
-[node name="Bunda" parent="Strand/PlayerPos/PlayerAnimation/Sprites/Up" index="4"]
-scale = Vector2(1, 1)
 
 [node name="Hand1" type="Sprite2D" parent="Strand"]
 z_index = -1
