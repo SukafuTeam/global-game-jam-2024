@@ -2,7 +2,7 @@ extends Node2D
 
 @export var enemies: Array[EnemyData]
 
-@export var budget_per_level: int = 10
+@export var budget_per_level: int = 8
 @export var budget_per_wave: int = 5
 
 
