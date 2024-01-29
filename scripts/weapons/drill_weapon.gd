@@ -89,6 +89,10 @@ func get_areas():
 	if current_drill_time < warm_time:
 		return []
 	
+	for area in hurtbox.get_overlapping_areas():
+		if area is Projectile:
+			area.queue_free()
+	
 	return hurtbox.get_overlapping_areas()
 
 func finished_attack():

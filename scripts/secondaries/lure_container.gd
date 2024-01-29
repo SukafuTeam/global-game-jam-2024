@@ -15,12 +15,12 @@ func _process(delta):
 func can_use() -> bool:
 	return current_cooldown_time >= cooldown and Global.mana >= 1
 
-func use(position: Vector2):
+func use(player_position: Vector2):
 	Global.mana -= 1
 	current_cooldown_time = -1000000
 	var ins = lure_scene.instantiate() as Lure
 	add_child(ins)
-	ins.global_position = position
+	ins.global_position = player_position
 	ins.finished.connect(func():
 		current_cooldown_time = 0
 	)

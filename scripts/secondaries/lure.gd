@@ -29,9 +29,7 @@ func _process(delta):
 	lifetime -= delta
 	
 	if lifetime <= 0.0:
-		Global.player = original_player
-		finished.emit()
-		queue_free()
+		finish()
 	
 	current_damage_cooldown -= delta
 	if current_damage_cooldown > 0:
@@ -44,3 +42,8 @@ func _process(delta):
 		
 		current_damage_cooldown = damage_cooldown_time
 		body_container.rotation_degrees = randf_range(-30, 30)
+
+func finish():
+	Global.player = original_player
+	finished.emit()
+	queue_free()

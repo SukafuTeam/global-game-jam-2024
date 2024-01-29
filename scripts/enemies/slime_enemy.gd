@@ -41,9 +41,9 @@ func _ready():
 	body.material.set_shader_parameter("color", Color(0.77, 0.65, 0.09))
 	flash_intensity = 1.0
 	
-	var tween = create_tween()
-	tween.tween_property(self, "flash_intensity", 0.0, 1.0)
-	tween.tween_callback(func():
+	var flash_tween = create_tween()
+	flash_tween.tween_property(self, "flash_intensity", 0.0, 1.0)
+	flash_tween.tween_callback(func():
 		body.material.set_shader_parameter("color", Color(1.0, 1.0, 1.0))
 	)
 
@@ -156,6 +156,7 @@ func take_damage(damage: int, attacker_position: Vector2):
 	move_direction = (attacker_position - global_position).normalized()
 	state = State.DAMAGE
 
+	body.material.set_shader_parameter("color", Color(1.0, 1.0, 1.0))
 	SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
 
 func update_animation():

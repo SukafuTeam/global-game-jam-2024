@@ -96,6 +96,7 @@ func take_damage(damage: int, attacker_position: Vector2):
 	velocity = -last_direction * recoil_impulse
 	state = State.DAMAGE
 	
+	body.material.set_shader_parameter("color", Color(1.0, 1.0, 1.0))
 	SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
 	
 	flash_intensity = 1.0

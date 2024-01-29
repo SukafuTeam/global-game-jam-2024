@@ -57,10 +57,9 @@ var state: State:
 			tween.tween_property(
 				body,
 				"scale",
-				initial_scale * (inhale_scale * 0.9),
+				initial_scale * (inhale_scale * 1.5),
 				0.05
 			)
-			# TODO: SPAWN PROJECTILE
 			tween.tween_callback(func():
 				var proj = projectile.instantiate() as Projectile
 				get_parent().add_child(proj)
@@ -99,18 +98,20 @@ func _ready():
 	fly_amplitude *= randf_range(0.9, 1.1)
 	fly_speed *= randf_range(0.8, 1.2)
 	
+	current_attack_cooldown = 5
+	
 	body.material.set_shader_parameter("color", Color(0.77, 0.65, 0.09))
 	flash_intensity = 1.0
 	
-	var tween = create_tween()
-	tween.tween_property(self, "flash_intensity", 0.0, 1.0)
-	tween.tween_callback(func():
+	var flash_tween = create_tween()
+	flash_tween.tween_property(self, "flash_intensity", 0.0, 1.0)
+	flash_tween.tween_callback(func():
 		body.material.set_shader_parameter("color", Color(1.0, 1.0, 1.0))
 	)
 
 func _process(delta):
 	current_attack_cooldown -= delta
-	update_sprite(delta)
+	update_sprite()
 	update_offset(delta)
 	body.material.set_shader_parameter("flash_intensity", flash_intensity)
 
@@ -182,19 +183,19 @@ func take_damage(damage: int, attacker_position: Vector2):
 	velocity = -last_direction * recoil_impulse
 	state = State.DAMAGE
 	
+	body.material.set_shader_parameter("color", Color(1.0, 1.0, 1.0))
 	SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
 	
 	flash_intensity = 1.0
-	var tween = create_tween()
-	tween.tween_property(
+	var flash_tween = create_tween()
+	flash_tween.tween_property(
 		self,
 		"flash_intensity",
 		0.0,
 		current_state_time
 	).set_ease(Tween.EASE_OUT)
 
-func update_sprite(delta):
-	
+func update_sprite():
 	if abs(last_direction.x) > 0.1:
 		body_container.scale.x = 1 if last_direction.x >=0 else -1
 	
@@ -218,8 +219,8 @@ func update_offset(delta):
 	
 	
 	
-	var scale = sin(time * (fly_speed / 1.5) + 2.0 / 2.0) * 1.5
+	var body_scale = sin(time * (fly_speed / 1.5) + 2.0 / 2.0) * 1.5
 	body.scale = Vector2(
-		initial_scale.x + (scale * 0.01),
-		initial_scale.y + (scale * 0.05),
+		initial_scale.x + (body_scale * 0.01),
+		initial_scale.y + (body_scale * 0.05),
 	)

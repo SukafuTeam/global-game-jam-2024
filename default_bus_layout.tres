@@ -1,0 +1,8 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://dasf0b7ihc67r"]
+
+[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_po2nv"]
+resource_name = "HighPassFilter"
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectHighPassFilter_po2nv")
+bus/0/effect/0/enabled = false

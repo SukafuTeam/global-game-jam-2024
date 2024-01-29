@@ -9,4 +9,4 @@ name = "Zack Red"
 scene = ExtResource("1_goucc")
 cost = 6
 preffered_stage = 9
-stage_decay = 9
+stage_decay = 6

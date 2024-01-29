@@ -30,7 +30,7 @@ fly_amplitude = 20.0
 fly_speed = 15.0
 down_textures = Array[Texture]([ExtResource("2_n71j7"), ExtResource("3_s6mnr")])
 up_textures = Array[Texture]([ExtResource("4_i7lgm"), ExtResource("5_jde0v")])
-health = 20
+health = 15
 death_color = Color(0.666667, 0.670588, 0.776471, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

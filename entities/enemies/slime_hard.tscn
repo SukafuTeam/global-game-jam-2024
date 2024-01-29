@@ -26,11 +26,11 @@ script = ExtResource("1_4qx10")
 move_speed = 500.0
 move_accel = 30.0
 move_time = 0.4
-breath_time = 0.1
+breath_time = 0.2
 final_scale_move = Vector2(1.2, 0.8)
 look_down_texture = ExtResource("2_fky47")
 look_up_texture = ExtResource("3_ycy7h")
-health = 20
+health = 14
 death_color = Color(0.607843, 0.788235, 0.878431, 1)
 
 [node name="BodyContainer" type="Node2D" parent="."]

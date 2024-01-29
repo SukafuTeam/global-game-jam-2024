@@ -41,14 +41,14 @@ func _ready():
 	body.material.set_shader_parameter("color", Color(0.77, 0.65, 0.09))
 	flash_intensity = 1.0
 	
-	var tween = create_tween()
-	tween.tween_property(self, "flash_intensity", 0.0, 1.0)
-	tween.tween_callback(func():
+	var flash_tween = create_tween()
+	flash_tween.tween_property(self, "flash_intensity", 0.0, 1.0)
+	flash_tween.tween_callback(func():
 		body.material.set_shader_parameter("color", Color(1.0, 1.0, 1.0))
 	)
 
 func _process(delta):
-	update_sprite(delta)
+	update_sprite()
 	update_offset(delta)
 	body.material.set_shader_parameter("flash_intensity", flash_intensity)
 
@@ -113,10 +113,11 @@ func take_damage(damage: int, attacker_position: Vector2):
 		should_hit = !(dir.x < 0 and dir.y < 0)
 		
 	if should_hit:
+		body.material.set_shader_parameter("color", Color(1.0, 1.0, 1.0))
 		health -= damage
 		flash_intensity = 1.0
-		var tween = create_tween()
-		tween.tween_property(
+		var flash_tween = create_tween()
+		flash_tween.tween_property(
 			self,
 			"flash_intensity",
 			0.0,
@@ -167,7 +168,7 @@ func enter_state(new_state):
 			
 			move_direction = (target - global_position).normalized()
 
-func update_sprite(delta):
+func update_sprite():
 	if abs(move_direction.x) > 0.1:
 		body_container.scale.x = 1 if move_direction.x >=0 else -1
 	

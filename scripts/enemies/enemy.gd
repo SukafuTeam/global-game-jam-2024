@@ -9,7 +9,7 @@ extends CharacterBody2D
 func _enter_tree():
 	Global.add_enemy()
 
-func take_damage(damage: int, attacker_position: Vector2):
+func take_damage(_damage: int, _attacker_position: Vector2):
 	pass
 	
 func _exit_tree():

@@ -43,17 +43,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WaveCounter" type="Label" parent="Container"]
-visible = false
-layout_mode = 1
-offset_left = 21.0
-offset_top = 20.0
-offset_right = 165.0
-offset_bottom = 123.0
-theme_override_font_sizes/font_size = 36
-text = "Stage: 1
-Wave:  1"
-
 [node name="RaizCima" type="TextureRect" parent="Container"]
 layout_mode = 0
 offset_left = 33.0
@@ -198,6 +187,7 @@ offset_left = 64.0
 offset_top = 105.0
 offset_right = 104.0
 offset_bottom = 159.0
+pivot_offset = Vector2(18, 2)
 texture = ExtResource("14_sb80o")
 
 [node name="Mana2" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
@@ -206,6 +196,7 @@ offset_left = 151.0
 offset_top = 105.0
 offset_right = 191.0
 offset_bottom = 159.0
+pivot_offset = Vector2(19, 3)
 texture = ExtResource("14_sb80o")
 
 [node name="Mana3" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
@@ -214,6 +205,7 @@ offset_left = 233.0
 offset_top = 105.0
 offset_right = 273.0
 offset_bottom = 159.0
+pivot_offset = Vector2(20, 2)
 texture = ExtResource("14_sb80o")
 
 [node name="Mana4" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
@@ -222,6 +214,7 @@ offset_left = 327.0
 offset_top = 104.0
 offset_right = 367.0
 offset_bottom = 158.0
+pivot_offset = Vector2(20, 3)
 texture = ExtResource("14_sb80o")
 
 [node name="Mana5" type="TextureRect" parent="Container/RaizCima/HealthContainer"]
@@ -230,6 +223,7 @@ offset_left = 431.0
 offset_top = 111.0
 offset_right = 471.0
 offset_bottom = 165.0
+pivot_offset = Vector2(20, 2)
 texture = ExtResource("14_sb80o")
 
 [node name="RaizItem" type="TextureRect" parent="Container"]

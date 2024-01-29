@@ -39,13 +39,13 @@ func _ready():
 	tween.tween_property(
 		weapon_area, 
 		"global_position",
-		start_point.global_position + Vector2(0, -300),
+		start_point.global_position + Vector2(-80, -300),
 		0.5
 	)
 	tween.parallel().tween_property(
 		secondary_area, 
 		"global_position",
-		start_point.global_position + Vector2(0, -300),
+		start_point.global_position + Vector2(80, -300),
 		0.5
 	)
 	tween.parallel().tween_property(

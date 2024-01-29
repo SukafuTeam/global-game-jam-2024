@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://dh05dtof2so66"]
+
+[ext_resource type="Script" path="res://scripts/health_pickup.gd" id="1_d8yyh"]
+[ext_resource type="Texture2D" uid="uid://bdx1sutg4dcbs" path="res://images/ui/UIgame/Hud/dente_1.png" id="1_m7cin"]
+[ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="2_f46vo"]
+[ext_resource type="AudioStream" uid="uid://dw6qd0htvo3yr" path="res://sounds/sfx/joinha.ogg" id="2_k4y6p"]
+
+[sub_resource type="Curve" id="Curve_20xlw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.51829), -1.35112, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_wmcda"]
+offsets = PackedFloat32Array(0.0233333, 0.273333, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wwe7j"]
+radius = 45.0111
+
+[node name="HealthPickup" type="Node2D"]
+script = ExtResource("1_d8yyh")
+pickup_sfx = ExtResource("2_k4y6p")
+
+[node name="Health" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("1_m7cin")
+offset = Vector2(-1, -30)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Health"]
+z_index = -1
+position = Vector2(-2.08165e-12, -34)
+emitting = false
+amount = 100
+texture = ExtResource("2_f46vo")
+emission_shape = 1
+emission_sphere_radius = 40.0
+gravity = Vector2(2.08165e-12, -100)
+radial_accel_min = -40.0
+radial_accel_max = -20.0
+scale_amount_min = 0.02
+scale_amount_max = 0.08
+scale_amount_curve = SubResource("Curve_20xlw")
+color_ramp = SubResource("Gradient_wmcda")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -35)
+collision_layer = 5
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wwe7j")

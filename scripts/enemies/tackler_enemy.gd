@@ -26,7 +26,7 @@ var time: float
 @export var tackle_move_speed: float = 500
 @export var tackle_distance: float = 200
 @export var tackle_cooldown: float = 2.0
-@export var prep_scale: Vector2 = Vector2(1.3, 0.7)
+@export var prep_scale: Vector2 = Vector2(1.5, 0.6)
 @export var prep_time: float = 0.6
 var current_tackle_cooldown: float
 
@@ -207,4 +207,5 @@ func take_damage(damage: int, attacker_position: Vector2):
 	last_input = (attacker_position - global_position).normalized()
 	state = State.DAMAGE
 	
+	body.material.set_shader_parameter("color", Color(1.0, 1.0, 1.0))
 	SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))

@@ -17,6 +17,10 @@ extends Weapon
 @export var start_spear_offset: float = 130.0
 @export var end_spear_offset: float = 200
 
+@export var initial_texture: Texture
+@export var final_texture: Texture
+@export var texture_threshold: float = 0.6
+
 var tween: Tween
 var attack_direction: Vector2
 var current_cooldown_time: float
@@ -24,29 +28,30 @@ var current_attack_time: float
 var on_recoil: bool
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite_root.hide()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	current_cooldown_time -= delta
 	if current_attack_time > 0.0:
 		current_attack_time -= delta
+	
+	var current_attack_percent = inverse_lerp(0, attack_time, current_attack_time)
+	if current_attack_percent < texture_threshold:
+		spear.texture = final_texture
 
 func can_attack() -> bool:
 	return current_cooldown_time <= 0.0
 	
 func attack(direction: Vector2):
+	spear.texture = initial_texture
 	attack_direction = direction
 	current_attack_time = attack_time
 	on_recoil = false
 	sprite_root.show()
 	sprite_root.look_at(global_position + direction)
 	hurtbox.hide()
-	
-	
+
 	if tween != null and tween.is_valid():
 		tween.kill()
 	
@@ -75,7 +80,7 @@ func hit_something():
 	on_recoil = true
 
 func get_areas():
-	var current_attack_percent = inverse_lerp(attack_time, 0, current_attack_time)
+	var current_attack_percent = inverse_lerp(0, attack_time, current_attack_time)
 	if current_attack_percent < hurt_range.x or current_attack_percent > hurt_range.y:
 		hurtbox.hide()
 		return []

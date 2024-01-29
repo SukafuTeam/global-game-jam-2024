@@ -14,9 +14,6 @@ signal footstep
 @export var up_pain_texture: Texture
 @export var up_strength_texture: Texture
 
-func _process(delta):
-	pass
-
 func on_footstep():
 	footstep.emit()
 	

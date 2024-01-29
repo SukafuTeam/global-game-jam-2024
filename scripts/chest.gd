@@ -9,9 +9,6 @@ class_name Chest
 var opened: bool
 
 
-func _process(delta):
-	pass
-
 func open():
 	if opened:
 		return

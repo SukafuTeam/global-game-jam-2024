@@ -3768,6 +3768,9 @@ rest = Transform2D(1, 0, 0, 1, 17, 27)
 [node name="PeDireito" type="Bone2D" parent="Skeleton2D/Pelvis/PernaDireita"]
 position = Vector2(-11, 20)
 rest = Transform2D(1, 0, 0, 1, -11, 20)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
 
 [node name="PernaEsquerda" type="Bone2D" parent="Skeleton2D/Pelvis"]
 position = Vector2(-27, 27)
@@ -3776,6 +3779,9 @@ rest = Transform2D(1, 0, 0, 1, -27, 27)
 [node name="PeEsquerdo" type="Bone2D" parent="Skeleton2D/Pelvis/PernaEsquerda"]
 position = Vector2(-7, 21)
 rest = Transform2D(1, 0, 0, 1, -7, 21)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
 
 [node name="Cabeça" type="Bone2D" parent="Skeleton2D/Pelvis"]
 position = Vector2(-5, -96)
@@ -3792,6 +3798,9 @@ remote_path = NodePath("../../../../Sprites/Up/CostasIdle")
 [node name="Oculos" type="Bone2D" parent="Skeleton2D/Pelvis/Cabeça"]
 position = Vector2(35, 19)
 rest = Transform2D(1, 0, 0, 1, 35, 19)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
 
 [node name="ROculos" type="RemoteTransform2D" parent="Skeleton2D/Pelvis/Cabeça/Oculos"]
 position = Vector2(-5, -10)
@@ -3805,6 +3814,9 @@ remote_path = NodePath("../../../../../Sprites/Up/Oculos")
 [node name="Sobrancelha" type="Bone2D" parent="Skeleton2D/Pelvis/Cabeça"]
 position = Vector2(32, 5)
 rest = Transform2D(1, 0, 0, 1, 32, 5)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
 
 [node name="RSobrancelha" type="RemoteTransform2D" parent="Skeleton2D/Pelvis/Cabeça/Sobrancelha"]
 position = Vector2(-4, -18)
@@ -3817,6 +3829,9 @@ remote_path = NodePath("../../../../../Sprites/Up/Sobrancelha")
 [node name="Bunda" type="Bone2D" parent="Skeleton2D/Pelvis"]
 position = Vector2(-33, -11)
 rest = Transform2D(1, 0, 0, 1, -33, -11)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
 
 [node name="RBunda" type="RemoteTransform2D" parent="Skeleton2D/Pelvis/Bunda"]
 position = Vector2(4, 0)

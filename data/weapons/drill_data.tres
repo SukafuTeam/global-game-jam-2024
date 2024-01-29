@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_ja0lh")
+name = "Drill"
 icon = ExtResource("2_u78fw")
 damage = 5
 speed = 2

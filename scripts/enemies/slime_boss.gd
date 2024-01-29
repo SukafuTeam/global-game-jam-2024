@@ -63,8 +63,7 @@ func _process(delta):
 	update_sprite()
 	check_spawn(delta)
 
-func _physics_process(delta):
-	
+func _physics_process(_delta):
 	match state:
 		State.MOVE:
 			state = handle_move()
@@ -98,7 +97,7 @@ func update_sprite():
 	
 	mouth.texture = idle_mouth if current_damage_cooldown <= 0.0 else damage_mouth
 
-func take_damage(damage: int, attacker_position: Vector2):
+func take_damage(damage: int, _attacker_position: Vector2):
 	if current_damage_cooldown >= 0:
 		return
 	

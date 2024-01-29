@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_cti33")
+name = "Spear"
 icon = ExtResource("2_ruv7t")
 damage = 3
 speed = 4

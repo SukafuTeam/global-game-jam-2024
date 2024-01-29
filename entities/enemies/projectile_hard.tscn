@@ -33,6 +33,7 @@ shoot_distance = 500.0
 inhale_time = 0.5
 exhale_time = 0.5
 projectile = ExtResource("5_5al3g")
+attack_cooldown = 5.0
 health = 8
 death_color = Color(0.615686, 0.270588, 0.509804, 1)
 

@@ -136,9 +136,9 @@ func _ready():
 	material.set_shader_parameter("color", Color(0.77, 0.65, 0.09))
 	flash_intensity = 1.0
 	
-	var tween = create_tween()
-	tween.tween_property(self, "flash_intensity", 0.0, 1.0)
-	tween.tween_callback(func():
+	var flash_tween = create_tween()
+	flash_tween.tween_property(self, "flash_intensity", 0.0, 1.0)
+	flash_tween.tween_callback(func():
 		material.set_shader_parameter("color", Color(1.0, 1.0, 1.0))
 	)
 	
@@ -157,7 +157,7 @@ func _process(delta):
 	material.set_shader_parameter("flash_intensity", flash_intensity)
 	current_attack_cooldown -= delta
 	current_damage_cooldown -= delta
-	update_sprite(delta)
+	update_sprite()
 	update_offset(delta)
 	
 	arms.position = arms.position.move_toward(body.position, 0.7)
@@ -199,17 +199,19 @@ func handle_attack(delta) -> State:
 	
 	return State.ATTACK
 	
-func take_damage(damage: int, attacker_position: Vector2):
+func take_damage(damage: int, _attacker_position: Vector2):
 	if current_damage_cooldown > 0.0:
 		return
 	
 	current_damage_cooldown = damage_cooldown
 	health -= damage
+	
+	material.set_shader_parameter("color", Color(1.0, 1.0, 1.0))
 	SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
 	
 	flash_intensity = 1.0
-	var tween = create_tween()
-	tween.tween_property(
+	var flash_tween = create_tween()
+	flash_tween.tween_property(
 		self,
 		"flash_intensity",
 		0.0,
@@ -221,7 +223,7 @@ func take_damage(damage: int, attacker_position: Vector2):
 		dead.emit()
 		queue_free()
 
-func update_sprite(delta):
+func update_sprite():
 	idle_face.visible = false
 	shooting_face.visible = false
 	damage_face.visible = false

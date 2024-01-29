@@ -25,7 +25,7 @@ func can_use() -> bool:
 		return false
 	return current_cooldown_time > cooldown_time and Global.mana >= 1
 
-func use(position: Vector2):
+func use(_player_position: Vector2):
 	Global.mana -= 1
 	
 	active = true

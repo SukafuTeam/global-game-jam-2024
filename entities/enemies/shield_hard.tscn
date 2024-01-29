@@ -20,7 +20,7 @@ radius = 34.0588
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tuei"]
 radius = 49.0
 
-[node name="ShieldMedium" type="CharacterBody2D"]
+[node name="ShieldHard" type="CharacterBody2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 collision_layer = 4
 collision_mask = 5
@@ -35,8 +35,8 @@ blink_times = 2
 down_texture = ExtResource("2_l21r2")
 up_texture = ExtResource("3_udot5")
 deny_sfx = ExtResource("4_q3dy4")
-health = 14
-death_color = Color(0, 0.658824, 0.647059, 1)
+health = 10
+death_color = Color(0.827451, 0.431373, 0.227451, 1)
 
 [node name="BodyContainer" type="Node2D" parent="."]
 rotation = 0.0102815

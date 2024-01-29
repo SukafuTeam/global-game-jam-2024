@@ -9,4 +9,4 @@ name = "Smoke Purple"
 scene = ExtResource("1_8a2ln")
 cost = 4
 preffered_stage = 6
-stage_decay = 6
+stage_decay = 4

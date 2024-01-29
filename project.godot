@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Dental Strike"
+config/name="Dental Striker"
 config/version="1.0"
 run/main_scene="res://scenes/logo_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
@@ -31,8 +31,9 @@ WhiteFade="*res://entities/global/white_fade.tscn"
 
 [display]
 
-window/size/viewport_width=1728
+window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 

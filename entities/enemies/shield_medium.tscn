@@ -34,7 +34,7 @@ blink_times = 3
 down_texture = ExtResource("2_m4p8h")
 up_texture = ExtResource("3_mj21d")
 deny_sfx = ExtResource("4_gbijb")
-health = 10
+health = 7
 death_color = Color(0, 0.658824, 0.647059, 1)
 
 [node name="BodyContainer" type="Node2D" parent="."]

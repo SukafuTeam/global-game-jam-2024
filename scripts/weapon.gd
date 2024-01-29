@@ -6,7 +6,7 @@ extends Node2D
 func can_attack() -> bool:
 	return false
 	
-func attack(direction: Vector2):
+func attack(_direction: Vector2):
 	pass
 	
 func get_move_velocity() -> Vector2:

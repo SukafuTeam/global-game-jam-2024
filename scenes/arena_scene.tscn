@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ciu4n5mm4yalf"]
+[gd_scene load_steps=29 format=3 uid="uid://ciu4n5mm4yalf"]
 
 [ext_resource type="Script" path="res://scripts/scenes/arena_scene.gd" id="1_pcskl"]
 [ext_resource type="Texture2D" uid="uid://dp8vxtp38jmwt" path="res://images/sprites/scenario/fundo.png" id="1_r57dj"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://05msy4rdwegw" path="res://images/sprites/scenario/dentes_cima.png" id="15_yuhyt"]
 [ext_resource type="Script" path="res://scripts/Uvula.gd" id="20_6nxhl"]
 [ext_resource type="PackedScene" uid="uid://bebayrx7sxxvb" path="res://entities/enemies/projectile_boss.tscn" id="20_74pcy"]
+[ext_resource type="PackedScene" uid="uid://boa65p2wugi8p" path="res://entities/ui/pause_layer.tscn" id="24_53pa0"]
+[ext_resource type="PackedScene" uid="uid://dh05dtof2so66" path="res://entities/health_pickup.tscn" id="25_q5cmu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtaio"]
 size = Vector2(84, 1468)
@@ -41,6 +43,7 @@ spawn_upper_limit = Vector2(-140, 395)
 spawn_lower_limit = Vector2(1970, 915)
 chest_scene = ExtResource("13_weifx")
 helicopter_scene = ExtResource("13_q6uos")
+pickup_scene = ExtResource("25_q5cmu")
 game_bmg = ExtResource("5_xuqsr")
 boss_bmg = ExtResource("7_kqgr2")
 victory_bmg = ExtResource("8_4s71f")
@@ -280,3 +283,8 @@ position = Vector2(629, 394)
 
 [node name="SlimeBossLocation" type="Marker2D" parent="."]
 position = Vector2(885, 540)
+
+[node name="HealthLocation" type="Marker2D" parent="."]
+position = Vector2(940, 346)
+
+[node name="PauseLayer" parent="." instance=ExtResource("24_53pa0")]

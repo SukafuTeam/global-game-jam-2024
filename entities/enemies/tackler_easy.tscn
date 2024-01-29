@@ -25,6 +25,7 @@ collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_heed3")
 move_accell = 20.0
+prep_time = 0.8
 down_move_texture = ExtResource("3_3h88o")
 down_tackle_texture = ExtResource("3_raoto")
 up_texture = ExtResource("4_jdfmr")

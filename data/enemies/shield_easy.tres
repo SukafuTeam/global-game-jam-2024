@@ -7,6 +7,6 @@
 script = ExtResource("1_5tkj7")
 name = "Gurguba Green"
 scene = ExtResource("1_osx8v")
-cost = 2
-preffered_stage = 2
+cost = 4
+preffered_stage = 3
 stage_decay = 5

@@ -48,7 +48,8 @@ var weapons: Array[WeaponData] = [
 	preload("res://data/weapons/sword_data.tres"),
 	preload("res://data/weapons/axe_data.tres"),
 	preload("res://data/weapons/spear_data.tres"),
-	preload("res://data/weapons/drill_data.tres")
+	preload("res://data/weapons/drill_data.tres"),
+	preload("res://data/weapons/scisor_data.tres")
 ]
 
 var secondaries: Array[SecondaryData] = [
@@ -69,7 +70,6 @@ var enemies_alive: int
 
 func _ready():
 	process_priority = -1000
-	reset_stats()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 func _process(_delta):
@@ -123,17 +123,19 @@ func equip_secondary(index):
 	player.add_child(instance)
 	player.secondary = instance
 	secondary_index = index
-	
+
 func get_random_weapon():
 	var selected = weapon_index
-	while selected == weapon_index:
+	while selected == weapon_index or selected == last_weapon_selected:
 		selected = randi_range(0, weapons.size()-1)
 	
+	last_weapon_selected = selected
 	return selected
 
 func get_random_secondary():
 	var selected = secondary_index
-	while selected == secondary_index:
+	while selected == secondary_index or selected == last_secodnary_selected:
 		selected = randi_range(0, secondaries.size()-1)
 	
+	last_secodnary_selected = selected
 	return selected

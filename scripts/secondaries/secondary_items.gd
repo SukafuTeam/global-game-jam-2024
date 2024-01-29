@@ -5,6 +5,6 @@ class_name SecondaryItem
 func can_use() -> bool:
 	return false
 
-func use(position: Vector2):
+func use(_player_position: Vector2):
 	pass
 	

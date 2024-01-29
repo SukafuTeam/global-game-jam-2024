@@ -95,12 +95,11 @@ func _process(delta):
 		
 		if Input.is_action_just_pressed("attack"):
 			animation.process_mode = Node.PROCESS_MODE_DISABLED
-			Global.reset_stats()
 			Transition.change_scene("res://scenes/menu_scene.tscn")
 			return
 	update_animation()
 	check_damage(delta)
-	walk_particle.emitting = velocity.length() > move_accel * 0.95
+	walk_particle.emitting = velocity.length() > move_accel * 0.95 and can_move
 	
 	if Input.is_action_just_pressed("attack"):
 		current_attack_buffer_time = attack_buffer_time
@@ -247,7 +246,7 @@ func enter_state(new_state):
 		State.DAMAGE:
 			player_animator.set_pain()
 			current_state_time = recoil_time
-			#flash_intensity = 1.0
+			animation_body.material.set_shader_parameter("color", Color(1, 1, 1))
 			var tween = create_tween()
 			tween.tween_property(self, "flash_intensity", 0.0, recoil_time)
 
@@ -368,5 +367,3 @@ func check_damage(delta):
 			damage_particle.emitting = true
 			last_input = -recoil_direction.normalized()
 			return
-			
-

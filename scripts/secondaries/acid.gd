@@ -5,7 +5,7 @@ class_name Acid
 
 @export var damage:int = 5
 
-func _process(delta):
+func _process(_delta):
 	var areas = hurtbox.get_overlapping_areas()
 	for area in areas:
 		if area.owner is Enemy:

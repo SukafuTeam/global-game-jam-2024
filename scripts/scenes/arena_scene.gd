@@ -7,6 +7,7 @@ var current_wave: int = 0
 @onready var camera: Camera2D = $Player/Camera2D
 @onready var helicoper_spawn: Marker2D = $HelicopterSpawn
 @onready var chest_spawn: Marker2D = $ChestSpawn
+@onready var health_spawn: Marker2D = $HealthLocation
 
 @onready var limpo: Node2D = $Scenario/Limpo
 
@@ -17,6 +18,7 @@ var current_wave: int = 0
 
 @export var chest_scene: PackedScene
 @export var helicopter_scene: PackedScene
+@export var pickup_scene: PackedScene
 
 @export var game_bmg: AudioStream
 @export var boss_bmg: AudioStream
@@ -51,20 +53,19 @@ func _ready():
 	Global.player.can_move = false
 	print("Current Stage: " + str(Global.current_stage))
 	current_wave = 1
-	next_wave()
 	
-	ui.update_stage_wave(Global.current_stage, current_wave)
-
 	Global.wave_cleared.connect(on_wave_clear)
 	
 	await get_tree().create_timer(1.0).timeout
 	
+	next_wave()
 	Global.player.can_move = true
 	
 
 func next_wave():
 	print("Current Wave: " + str(current_wave))
-	await get_tree().create_timer(1).timeout
+	
+	await get_tree().create_timer(0.2).timeout
 	
 	total_enemies = 0
 	var wave = WaveSpawner.generate_wave(Global.current_stage, current_wave)
@@ -74,7 +75,6 @@ func next_wave():
 		var spawn = enemy_spawn.instantiate() as EnemySpawner
 		add_child(spawn)
 		spawn.global_position = pos
-		var sce = wave_enemy.scene
 		spawn.enemy = wave_enemy.scene
 		spawn.setup()
 
@@ -108,10 +108,12 @@ func on_wave_clear():
 		call_deferred("add_boss")
 		return
 	
-	ui.update_stage_wave(Global.current_stage, current_wave)
 	next_wave()
 
 func add_boss():
+	if Global.player == null:
+		return
+	
 	Global.player.can_move = false
 	Global.player.state = Global.player.State.IDLE
 	Global.player.hide()
@@ -159,6 +161,11 @@ func add_boss():
 	)
 
 func end_stage():
+	if Global.player is Lure:
+		var p = Global.player as Lure
+		p.finish()
+		
+	
 	SoundController.change_bmg("victory", victory_bmg)
 	Global.current_stage += 1
 	Global.player.can_move = false
@@ -168,7 +175,7 @@ func end_stage():
 	
 	var tween = create_tween()
 	var first_target = chest_spawn.global_position
-	first_target.y -= 500
+	first_target += Vector2(230, -500)
 	tween.tween_property(
 		camera,
 		"global_position",
@@ -180,7 +187,14 @@ func end_stage():
 		add_child(chest)
 		chest.global_position = chest_spawn.global_position
 	)
-	tween.tween_interval(1.0)
+	if (Global.current_stage-1) % 3 != 0:
+		tween.tween_interval(0.5)
+		tween.tween_callback(func():
+			var health = pickup_scene.instantiate()
+			add_child(health)
+			health.global_position = health_spawn.global_position
+		)
+	tween.tween_interval(0.5)
 	tween.tween_callback(func():
 		var heli = helicopter_scene.instantiate()
 		add_child(heli)

@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_k0c25")
+name = "Axe"
 icon = ExtResource("2_hw8xh")
 damage = 4
 speed = 1

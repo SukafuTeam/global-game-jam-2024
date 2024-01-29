@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsat1l6vac73t"]
+[gd_scene load_steps=7 format=3 uid="uid://dgs41160g0fv1"]
 
-[ext_resource type="Script" path="res://scripts/weapons/poke_weapon.gd" id="1_iuwx0"]
-[ext_resource type="Texture2D" uid="uid://ch60tesv22iem" path="res://images/sprites/weapons/__0006_seringa_maos.png" id="2_sy4hf"]
+[ext_resource type="Script" path="res://scripts/weapons/poke_weapon.gd" id="1_u5v7j"]
+[ext_resource type="Texture2D" uid="uid://p88tu4e4umn0" path="res://images/sprites/weapons/__0012_tesoura_aberta_maos.png" id="2_bnweu"]
+[ext_resource type="Texture2D" uid="uid://crtf1yb0y87g5" path="res://images/sprites/weapons/__0011_tesoura_fechada_maos.png" id="3_56pub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tip6f"]
-size = Vector2(200, 58)
+size = Vector2(154, 140)
 
 [sub_resource type="Curve" id="Curve_1qqtl"]
 _data = [Vector2(0, 0.103636), 0.0, 1.38964, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -15,11 +16,17 @@ colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0)
 
 [node name="SpearWeapon" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_iuwx0")
-hurt_range = Vector2(0.1, 0.5)
-initial_texture = ExtResource("2_sy4hf")
-final_texture = ExtResource("2_sy4hf")
-texture_threshold = 0.8
+script = ExtResource("1_u5v7j")
+attack_move_speed = 400.0
+attack_time = 0.5
+hurt_range = Vector2(0.3, 0.8)
+attack_ease_type = 2
+attack_trans_type = 3
+start_spear_offset = 220.0
+end_spear_offset = 260.0
+initial_texture = ExtResource("2_bnweu")
+final_texture = ExtResource("3_56pub")
+texture_threshold = 0.5
 
 [node name="SpriteRoot" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -30,17 +37,19 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteRoot/HurtBox"]
+position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_tip6f")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="Spear" type="Sprite2D" parent="SpriteRoot"]
-position = Vector2(132.667, 0.338378)
+position = Vector2(260, 2.08165e-12)
 rotation = 1.55869
-scale = Vector2(0.581315, 0.581315)
-texture = ExtResource("2_sy4hf")
-offset = Vector2(2.21963, 52.7857)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_56pub")
+offset = Vector2(2.80192, 153.184)
 
 [node name="Line2D" type="Line2D" parent="SpriteRoot/Spear"]
+visible = false
 points = PackedVector2Array(5.79287, -100.283, 3.44811, -48.7008, 1.0617, 6.32185, 3.64824, 76.888, 0.907868, 161.153, 0.533079, 192.115)
 width = 100.0
 width_curve = SubResource("Curve_1qqtl")

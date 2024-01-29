@@ -3,22 +3,27 @@ extends Node2D
 @export var enemies: Array[EnemyData]
 
 @export var budget_per_level: int = 8
-@export var budget_per_wave: int = 5
+@export var budget_per_wave: int = 3
 
 
 #func _ready():
 	#for i in range(1,30):
-		#for j in range(1,3):
+		#for j in range(1,4):
 			#var wave = generate_wave(i, j)
 			#
 			#var value = "Stage: " + str(i) + " Wave: " + str(j) + " | "
 			#for enemy in wave:
 				#value += enemy.name + " | "
 			#print(value)
+		#print("------")
 
 
 func generate_wave(current_stage, current_wave) -> Array[EnemyData]:
 	
+	# The budget grows indefinitely
+	var total_budget = (current_stage * budget_per_level) + (current_wave * budget_per_wave)
+	
+	# The enemy spawn don't
 	if current_stage > 9:
 		current_stage = 9
 	
@@ -37,8 +42,6 @@ func generate_wave(current_stage, current_wave) -> Array[EnemyData]:
 	
 	if n_attempts ==3:
 		push_warning("MOving forward on stage ", current_stage, " with invalid pool :(")
-	
-	var total_budget = (current_stage * budget_per_level) + (current_wave * budget_per_wave)
 	
 	# Filter out all enemies who cost more than 30% of the current budget
 	# This is so we guarante at least 4 enemies per wave

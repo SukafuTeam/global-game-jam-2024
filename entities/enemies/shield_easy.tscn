@@ -29,7 +29,7 @@ script = ExtResource("1_jj0cc")
 down_texture = ExtResource("1_l2lgb")
 up_texture = ExtResource("3_ypu2s")
 deny_sfx = ExtResource("4_1xo60")
-health = 6
+health = 4
 death_color = Color(0.72549, 0.898039, 0.427451, 1)
 
 [node name="BodyContainer" type="Node2D" parent="."]

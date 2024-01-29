@@ -29,11 +29,11 @@ move_accell = 20.0
 jump_speed = 20.0
 tackle_time = 0.4
 tackle_move_speed = 600.0
-prep_time = 0.4
+prep_time = 0.7
 down_move_texture = ExtResource("2_w44bw")
 down_tackle_texture = ExtResource("3_uv3y0")
 up_texture = ExtResource("4_7fulc")
-health = 12
+health = 8
 death_color = Color(0.94902, 0.882353, 0.364706, 1)
 
 [node name="BodyContainer" type="Node2D" parent="."]
