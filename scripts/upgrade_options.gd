@@ -10,6 +10,8 @@ extends Node2D
 @onready var weapon_sprite: Sprite2D = $WeaponChoice/WeaponChoise
 @onready var secondary_sprite: Sprite2D = $SecondaryChoice/SecondaryChoise
 
+@export var pickup_sfx: AudioStream
+
 var weapon_index: int
 var secondary_index: int
 
@@ -92,6 +94,7 @@ func _process(delta):
 func picked_weapon(body):
 	if !(body is PlayerController) or !can_pick:
 		return
+	SoundController.play_sfx(pickup_sfx)
 	Global.equip_weapon(weapon_index)
 	queue_free()
 
@@ -99,6 +102,7 @@ func picked_secondary(body):
 	if !(body is PlayerController) or !can_pick:
 		return
 	
+	SoundController.play_sfx(pickup_sfx)
 	Global.equip_secondary(secondary_index)
 	queue_free()
 	

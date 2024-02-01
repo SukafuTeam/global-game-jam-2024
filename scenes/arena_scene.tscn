@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ciu4n5mm4yalf"]
+[gd_scene load_steps=30 format=3 uid="uid://ciu4n5mm4yalf"]
 
 [ext_resource type="Script" path="res://scripts/scenes/arena_scene.gd" id="1_pcskl"]
 [ext_resource type="Texture2D" uid="uid://dp8vxtp38jmwt" path="res://images/sprites/scenario/fundo.png" id="1_r57dj"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dcob3es6ej8c1" path="res://sounds/bmg/pause_end_credit.ogg" id="8_4s71f"]
 [ext_resource type="PackedScene" uid="uid://bsc7efek5eaue" path="res://entities/enemy_spawn.tscn" id="9_fpq5y"]
 [ext_resource type="PackedScene" uid="uid://bjqlx7sbk62ii" path="res://entities/ui/ui.tscn" id="11_kcgsc"]
+[ext_resource type="AudioStream" uid="uid://dw6qd0htvo3yr" path="res://sounds/sfx/joinha.ogg" id="12_rp8kh"]
 [ext_resource type="Texture2D" uid="uid://c2gff0ps28fhn" path="res://images/sprites/scenario/Ilustração_Sem_Título.png" id="12_y6ngm"]
 [ext_resource type="Texture2D" uid="uid://dkfqsp7j0kth4" path="res://images/sprites/scenario/lingua.png" id="13_f7j83"]
 [ext_resource type="PackedScene" uid="uid://j5s6of04as4u" path="res://entities/helicopter.tscn" id="13_q6uos"]
@@ -50,6 +51,7 @@ victory_bmg = ExtResource("8_4s71f")
 slime_boss = ExtResource("15_kw4t1")
 projectile_boss = ExtResource("20_74pcy")
 boss_particle = ExtResource("7_exe7a")
+boss_death_sfx = ExtResource("12_rp8kh")
 
 [node name="Scenario" type="Node2D" parent="."]
 z_index = -10

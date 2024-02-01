@@ -5,6 +5,7 @@ signal fade_out_finished
 
 @onready var circle: Sprite2D = $Circle
 @onready var fade: ColorRect = $Circle/Fade
+var transitioning: bool
 
 func _ready():
 	circle.scale = Vector2.ONE * 5
@@ -12,6 +13,10 @@ func _ready():
 	circle.global_position = circle.get_viewport_rect().size / 2
 
 func transtition(origin_position: Vector2, target_position: Vector2, new_scene: String):
+	if transitioning:
+		return
+	
+	transitioning = true
 	var tween = create_tween()
 	circle.global_position = origin_position
 	circle.scale = Vector2.ONE * 5
@@ -35,9 +40,14 @@ func transtition(origin_position: Vector2, target_position: Vector2, new_scene: 
 
 	await tween.finished
 
+	transitioning = false
 	fade_out_finished.emit()
 	
 func reload_scene(origin_position: Vector2, target_position: Vector2):
+	if transitioning:
+		return
+	
+	transitioning = true
 	var tween = create_tween()
 	circle.scale = Vector2.ONE * 5
 	circle.global_position = origin_position
@@ -61,4 +71,5 @@ func reload_scene(origin_position: Vector2, target_position: Vector2):
 
 	await tween.finished
 
+	transitioning = false
 	fade_out_finished.emit()

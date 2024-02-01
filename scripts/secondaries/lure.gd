@@ -7,7 +7,7 @@ signal finished
 @onready var hitbox: Area2D = $Area2D
 
 @export var lifetime: float = 20.0
-@export var damage_cooldown_time: float = 0.5
+@export var damage_cooldown_time: float = 0.1
 var current_damage_cooldown: float
 
 var original_player: Node2D

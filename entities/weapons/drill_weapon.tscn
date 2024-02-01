@@ -17,7 +17,6 @@ cooldown_time = 0.2
 move_speed = 100.0
 slow_texture = ExtResource("2_domsh")
 fast_texture = ExtResource("3_3jv0c")
-swap_time_range = Vector2(0.5, 0.3)
 warm_time = 1.0
 overheat_time = 5.0
 heat_color = Color(1, 0.211765, 0, 1)

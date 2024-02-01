@@ -24,6 +24,12 @@ func can_use() -> bool:
 	if active:
 		return false
 	return current_cooldown_time > cooldown_time and Global.mana >= 1
+	
+func get_cooldown():
+	if active:
+		return 0.0
+	
+	return inverse_lerp(0, cooldown_time, current_cooldown_time)
 
 func use(_player_position: Vector2):
 	Global.mana -= 1

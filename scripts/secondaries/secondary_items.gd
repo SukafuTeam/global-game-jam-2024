@@ -7,4 +7,6 @@ func can_use() -> bool:
 
 func use(_player_position: Vector2):
 	pass
-	
+
+func get_cooldown():
+	pass

@@ -34,6 +34,11 @@ var can_secondary: bool:
 		if secondary == null:
 			return false
 		return secondary.can_use()
+var secondary_cooldown: float:
+	get:
+		if secondary == null:
+			return 0.0
+		return secondary.get_cooldown()
 
 @export_subgroup("State Fields")
 var state: State:

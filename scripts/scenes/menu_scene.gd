@@ -6,13 +6,10 @@ var transitioning: bool
 @export var menu_music: AudioStream
 @onready var player: Node2D = $background/Vineboom/PlayerAnimation
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	SoundController.change_bmg("menu", menu_music)
 	Global.reset_stats()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if transitioning:
 		return

@@ -7,17 +7,17 @@ class_name AcidContainer
 @export var cooldown_time: float = 20.0
 var current_cooldown_time
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	current_cooldown_time = cooldown_time
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	current_cooldown_time += delta
 	
 func can_use() -> bool:
 	return current_cooldown_time >= cooldown_time and Global.mana >= 1
+
+func get_cooldown():
+	return inverse_lerp(0, cooldown_time, current_cooldown_time)
 
 func use(_player_position: Vector2):
 	Global.mana -=1

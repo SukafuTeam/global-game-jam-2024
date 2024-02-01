@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bjqlx7sbk62ii"]
+[gd_scene load_steps=32 format=3 uid="uid://bjqlx7sbk62ii"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_pd8f5"]
 [ext_resource type="Texture2D" uid="uid://dqkdtbiv52ogm" path="res://images/ui/UIgame/Raizes/raizCima.png" id="2_p54d0"]
@@ -25,10 +25,16 @@
 [ext_resource type="Texture2D" uid="uid://dsta1agqlgpqr" path="res://images/ui/UIgame/Molduras/consoleCima.png" id="19_wicth"]
 [ext_resource type="Texture2D" uid="uid://b6ewk84ojr6ed" path="res://images/ui/UIgame/Raizes/raizBaixo.png" id="20_mwu3x"]
 [ext_resource type="Texture2D" uid="uid://ctsqqhncllbp3" path="res://images/ui/UIgame/Barra waves/barraWave.png" id="21_m04tt"]
-[ext_resource type="Texture2D" uid="uid://bfci6g23y6ecv" path="res://images/ui/iconsArmas/iconSecPoca.png" id="22_d10qt"]
 [ext_resource type="Texture2D" uid="uid://dwkp2yv3c76yb" path="res://images/ui/UIgame/Barra waves/loadingBarWave.png" id="22_f0wdp"]
+[ext_resource type="Texture2D" uid="uid://c7h4hpddopnwg" path="res://images/ui/iconsArmas/iconSecInvencivel.png" id="22_m76md"]
+[ext_resource type="Shader" path="res://shaders/flash_color.gdshader" id="23_3iacv"]
 [ext_resource type="Texture2D" uid="uid://dobral8cy5cqp" path="res://images/ui/UIgame/Barra waves/waveAlert.png" id="26_0eor0"]
 [ext_resource type="FontFile" uid="uid://bulp21dtew80d" path="res://fonts/Brootahh-Regular.ttf" id="29_3ba8g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u16iv"]
+shader = ExtResource("23_3iacv")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 0.0
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("hearts", "manas")]
 script = ExtResource("1_pd8f5")
@@ -272,10 +278,20 @@ offset_bottom = 518.0
 texture = ExtResource("17_344m5")
 
 [node name="SecondaryIcon" type="TextureRect" parent="Container/RaizItem/SecundaryContainer"]
+self_modulate = Color(1, 1, 1, 0.196078)
 layout_mode = 0
 offset_right = 170.0
 offset_bottom = 150.0
-texture = ExtResource("22_d10qt")
+texture = ExtResource("22_m76md")
+
+[node name="SecondaryProgress" type="TextureProgressBar" parent="Container/RaizItem/SecundaryContainer/SecondaryIcon"]
+material = SubResource("ShaderMaterial_u16iv")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 26.0
+fill_mode = 4
+texture_progress = ExtResource("22_m76md")
 
 [node name="Input" type="TextureRect" parent="Container/RaizItem/SecundaryContainer"]
 layout_mode = 0

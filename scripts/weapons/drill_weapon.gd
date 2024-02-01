@@ -15,7 +15,7 @@ var current_cooldown_time: float
 
 @export var slow_texture: Texture
 @export var fast_texture: Texture
-@export var swap_time_range:Vector2 = Vector2(0.2, 0.01)
+@export var swap_time_range:Vector2 = Vector2(0.01, 0.15)
 var current_texture_time: float
 
 @export var warm_time: float = 1.5
@@ -28,7 +28,7 @@ var drilling: bool
 
 func _ready():
 	hurtbox.hide()
-	sprite_root.hide()
+	sprite_root.hide()	
 
 func _process(delta):
 	current_cooldown_time -= delta
@@ -47,9 +47,9 @@ func _process(delta):
 	current_texture_time -= delta
 	
 	if current_texture_time <= 0:
-		current_texture_time = inverse_lerp(swap_time_range.x, swap_time_range.y, warm_percent)
+		current_texture_time = lerp(swap_time_range.y, swap_time_range.x, warm_percent)
 		drill_tip.flip_v = !drill_tip.flip_v
-		drill_tip.texture = slow_texture if warm_percent < 0.9 else fast_texture
+		drill_tip.texture = slow_texture if warm_percent < 1.0 else fast_texture
 	
 	hurtbox.visible = warm_percent >= 0.95
 	
@@ -86,12 +86,12 @@ func hit_something():
 	pass
 
 func get_areas():
-	if current_drill_time < warm_time:
-		return []
-	
 	for area in hurtbox.get_overlapping_areas():
 		if area is Projectile:
 			area.queue_free()
+	
+	if current_drill_time < warm_time:
+		return []
 	
 	return hurtbox.get_overlapping_areas()
 

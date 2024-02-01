@@ -16,6 +16,9 @@ func _process(delta):
 func can_use() -> bool:
 	return current_cooldown >= cooldown_time and Global.mana >= 1
 
+func get_cooldown():
+	return inverse_lerp(0, cooldown_time, current_cooldown)
+
 func use(_player_position: Vector2):
 	Global.mana -=1
 	var p = Global.player as PlayerController

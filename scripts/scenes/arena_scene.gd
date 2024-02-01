@@ -29,6 +29,7 @@ var current_wave: int = 0
 @export var projectile_boss: PackedScene
 
 @export var boss_particle: PackedScene
+@export var boss_death_sfx: AudioStream
 
 var total_enemies: int
 
@@ -60,7 +61,13 @@ func _ready():
 	
 	next_wave()
 	Global.player.can_move = true
-	
+
+func _process(_delta):
+	if Global.player is PlayerController:
+		var p = Global.player as PlayerController
+		ui.update_seconday(p.secondary_cooldown)
+	else:
+		ui.update_seconday(0)
 
 func next_wave():
 	print("Current Wave: " + str(current_wave))
@@ -111,6 +118,10 @@ func on_wave_clear():
 	next_wave()
 
 func add_boss():
+	if Global.player is Lure:
+		var p = Global.player as Lure
+		p.finish()
+	
 	if Global.player == null:
 		return
 	
@@ -131,6 +142,7 @@ func add_boss():
 	add_child(par)
 	par.global_position = slime_boss_location.global_position
 	par.enemy = null
+	SoundController.change_bmg("boss", boss_bmg)
 	
 	par.setup()
 	
@@ -139,8 +151,6 @@ func add_boss():
 	tween = create_tween()
 	tween.tween_property(get_viewport().get_camera_2d(), "position", Vector2.ZERO, 0.5)
 	Global.player.can_move = true
-	
-	SoundController.change_bmg("boss", boss_bmg)
 	
 	var scene = slime_boss
 	
@@ -151,6 +161,8 @@ func add_boss():
 	add_child(boss)
 	boss.global_position = slime_boss_location.global_position
 	boss.dead.connect(func():
+		SoundController.stop_bmg()
+		SoundController.play_sfx(boss_death_sfx)
 		await get_tree().create_timer(1.0).timeout
 		limpo.show()
 		Global.health = 5
