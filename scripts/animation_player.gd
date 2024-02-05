@@ -24,7 +24,6 @@ func set_idle():
 func set_pain():
 	down_face.texture = down_pain_texture
 	up_face.texture = up_pain_texture
-	
 
 func set_strength():
 	down_face.texture = down_strength_texture

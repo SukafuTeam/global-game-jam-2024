@@ -36,6 +36,7 @@ var initial_scale: Vector2
 @export var attack_cooldown: float = 2.0
 var current_attack_cooldown: float
 @onready var projectile_point: Node2D = $BodyContainer/Body/ProjectTileSpawn
+@onready var health_boss: HealthBoss = $HealthBoss
 
 @export var damage_cooldown: float = 0.2
 var current_damage_cooldown: float
@@ -131,7 +132,9 @@ func _ready():
 	initial_offset = body.position.y
 	fly_amplitude *= randf_range(0.9, 1.1)
 	fly_speed *= randf_range(0.8, 1.2)
-	current_attack_cooldown = 10.0
+	current_attack_cooldown = 5.0
+	
+	health_boss.setup(health)
 	
 	material.set_shader_parameter("color", Color(0.77, 0.65, 0.09))
 	flash_intensity = 1.0
@@ -205,6 +208,7 @@ func take_damage(damage: int, _attacker_position: Vector2):
 	
 	current_damage_cooldown = damage_cooldown
 	health -= damage
+	health_boss.update_health(health)
 	
 	material.set_shader_parameter("color", Color(1.0, 1.0, 1.0))
 	SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))

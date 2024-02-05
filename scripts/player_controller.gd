@@ -95,12 +95,13 @@ func _process(delta):
 	if Global.health == 0:
 		time_dead += delta
 		last_input = Vector2(1,1)
-		if time_dead < 3:
+		if time_dead < 1:
 			return
 		
 		if Input.is_action_just_pressed("attack"):
 			animation.process_mode = Node.PROCESS_MODE_DISABLED
 			Transition.change_scene("res://scenes/menu_scene.tscn")
+			AudioServer.set_bus_effect_enabled(0, 1, false)
 			return
 	update_animation()
 	check_damage(delta)
@@ -213,6 +214,11 @@ func handle_damage(delta):
 			animation_down.show()
 			animation_up.hide()
 			animation.play("death_down")
+			
+			if Global.player is Lure:
+				var l = Global.player as Lure
+				l.finish()
+			
 			return State.DAMAGE
 		return State.IDLE
 	
@@ -333,42 +339,53 @@ func check_damage(delta):
 	var areas = hitbox.get_overlapping_areas()
 	for area in areas:
 		if area.owner is Enemy or area is Projectile:
-			
-			SoundController.play_sfx(damage_effect)
-			
-			var should_hurt = true
-			if secondary != null:
-				if secondary is ShieldItem:
-					var shield = secondary as ShieldItem
-					if shield.active:
-						shield.used()
-						should_hurt = false
-					
-			if should_hurt:
-				Global.health -= 1
-			
-			var tween = create_tween()
-			var camera = get_viewport().get_camera_2d()
-			var original = Vector2.ONE
-			var target = Vector2.ONE * 2.0
-			
-			tween.tween_property(
-				camera,
-				"zoom",
-				target,
-				0.2
-			).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
-			tween.tween_property(
-				camera,
-				"zoom",
-				original,
-				0.5
-			)
-			
-			current_damage_cooldown = damage_cooldown_time
-			state = State.DAMAGE
-			recoil_direction = global_position - area.global_position
-			damage_particle.look_at(damage_particle.global_position + recoil_direction)
-			damage_particle.emitting = true
-			last_input = -recoil_direction.normalized()
+			take_damage(area.global_position)
 			return
+
+func take_damage(attacker_position: Vector2):
+	if Global.health == 0 or current_damage_cooldown > 0.0:
+		return
+	
+	if state == State.DASH or current_damage_cooldown > 0.0:
+		hitbox.hide()
+		return
+	
+	hitbox.show()
+	
+	SoundController.play_sfx(damage_effect)
+			
+	var should_hurt = true
+	if secondary != null:
+		if secondary is ShieldItem:
+			var shield = secondary as ShieldItem
+			if shield.active:
+				shield.used()
+				should_hurt = false
+			
+	if should_hurt:
+		Global.health -= 1
+	
+	var tween = create_tween()
+	var camera = get_viewport().get_camera_2d()
+	var original = Vector2.ONE
+	var target = Vector2.ONE * 2.0
+	
+	tween.tween_property(
+		camera,
+		"zoom",
+		target,
+		0.2
+	).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(
+		camera,
+		"zoom",
+		original,
+		0.5
+	)
+	
+	current_damage_cooldown = damage_cooldown_time
+	state = State.DAMAGE
+	recoil_direction = global_position - attacker_position
+	damage_particle.look_at(damage_particle.global_position + recoil_direction)
+	damage_particle.emitting = true
+	last_input = -recoil_direction.normalized()

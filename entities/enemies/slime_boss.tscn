@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bhdb8ylg22vmm"]
+[gd_scene load_steps=16 format=3 uid="uid://bhdb8ylg22vmm"]
 
 [ext_resource type="Shader" path="res://shaders/slime_boss.gdshader" id="1_hhmaj"]
 [ext_resource type="Script" path="res://scripts/enemies/slime_boss.gd" id="1_wx8mf"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://wqwwtr8de2e4" path="res://entities/enemies/slime_easy.tscn" id="5_olrma"]
 [ext_resource type="Texture2D" uid="uid://dbmg1mn32ir3x" path="res://images/sprites/enemies/slime boss/idle.png" id="6_3b4he"]
 [ext_resource type="PackedScene" uid="uid://pew2k35ds8il" path="res://entities/enemies/slime_medium.tscn" id="6_taqr2"]
+[ext_resource type="PackedScene" uid="uid://by2o1gkwxgkw1" path="res://entities/ui/health_boss.tscn" id="7_jvjf8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_38lnu"]
 shader = ExtResource("1_hhmaj")
@@ -33,6 +34,7 @@ position = Vector2(459, 610)
 collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_wx8mf")
+move_speed_range = Vector2(30, 300)
 minimum_scale = 1.0
 body_texture = ExtResource("1_xxjew")
 eyes = [NodePath("BodyContainer/Body/EyeSocket"), NodePath("BodyContainer/Body/EyeSocket2"), NodePath("BodyContainer/Body/EyeSocket3")]
@@ -41,8 +43,10 @@ damage_mouth = ExtResource("4_sm87g")
 spawn_slime_range = Vector2(8, 2)
 weak_slime = ExtResource("5_olrma")
 strong_slime = ExtResource("6_taqr2")
-health = 70
+health = 100
 death_color = Color(0.592157, 1, 0.560784, 1)
+
+[node name="HealthBoss" parent="." instance=ExtResource("7_jvjf8")]
 
 [node name="BodyContainer" type="Node2D" parent="."]
 

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bxr12vibyykwc" path="res://images/sprites/scenario/fim de fase/__0002_joinha.png" id="6_oe3ux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6tkl"]
-size = Vector2(94, 298)
+size = Vector2(31, 119)
 
 [node name="helicopter" type="Node2D"]
 script = ExtResource("1_itdj2")
@@ -55,7 +55,7 @@ position = Vector2(0, 776)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
-position = Vector2(0, -50)
+position = Vector2(-5.5, -40.5)
 shape = SubResource("RectangleShape2D_m6tkl")
 
 [editable path="Strand/PlayerPos/PlayerAnimation"]

@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://by2o1gkwxgkw1"]
+
+[ext_resource type="Texture2D" uid="uid://b6ewk84ojr6ed" path="res://images/ui/UIgame/Raizes/raizBaixo.png" id="1_5h63g"]
+[ext_resource type="Script" path="res://scripts/ui/health_boss.gd" id="1_hktse"]
+[ext_resource type="Texture2D" uid="uid://ctsqqhncllbp3" path="res://images/ui/UIgame/Barra waves/barraWave.png" id="2_dhj1t"]
+[ext_resource type="Shader" path="res://shaders/flash_color.gdshader" id="3_8lwhs"]
+[ext_resource type="Texture2D" uid="uid://dwkp2yv3c76yb" path="res://images/ui/UIgame/Barra waves/loadingBarWave.png" id="3_xrpoo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yydgb"]
+shader = ExtResource("3_8lwhs")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 1.0
+
+[node name="HealthBoss" type="CanvasLayer"]
+script = ExtResource("1_hktse")
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RaziMeio" type="TextureRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -524.0
+offset_top = -151.0
+offset_right = 524.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_5h63g")
+
+[node name="Background" type="TextureRect" parent="Container/RaziMeio"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -433.0
+offset_top = -53.5
+offset_right = 434.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dhj1t")
+
+[node name="BackBar" type="TextureProgressBar" parent="Container/RaziMeio/Background"]
+material = SubResource("ShaderMaterial_yydgb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 24.0
+offset_right = -19.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1000.0
+value = 600.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_xrpoo")
+texture_progress = ExtResource("3_xrpoo")
+tint_under = Color(0.196078, 0.196078, 0.196078, 0.458824)
+
+[node name="Frontbar" type="TextureProgressBar" parent="Container/RaziMeio/Background"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 24.0
+offset_right = -19.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1000.0
+value = 500.0
+nine_patch_stretch = true
+texture_progress = ExtResource("3_xrpoo")
+tint_under = Color(0.196078, 0.196078, 0.196078, 0.458824)

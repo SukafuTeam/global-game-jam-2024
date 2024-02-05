@@ -14,7 +14,7 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_rg2ex"]
 colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0)
 
-[node name="SpearWeapon" type="Node2D"]
+[node name="ScisorWeapon" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_u5v7j")
 attack_move_speed = 400.0
@@ -34,7 +34,7 @@ y_sort_enabled = true
 [node name="HurtBox" type="Area2D" parent="SpriteRoot"]
 position = Vector2(132, 0)
 collision_layer = 2
-collision_mask = 4
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteRoot/HurtBox"]
 position = Vector2(5, 0)

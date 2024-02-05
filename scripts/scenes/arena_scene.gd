@@ -8,6 +8,7 @@ var current_wave: int = 0
 @onready var helicoper_spawn: Marker2D = $HelicopterSpawn
 @onready var chest_spawn: Marker2D = $ChestSpawn
 @onready var health_spawn: Marker2D = $HealthLocation
+@onready var dead_layer: CanvasLayer = $DeadLayer
 
 @onready var limpo: Node2D = $Scenario/Limpo
 
@@ -27,6 +28,7 @@ var current_wave: int = 0
 @onready var slime_boss_location: Marker2D = $SlimeBossLocation
 @export var slime_boss: PackedScene
 @export var projectile_boss: PackedScene
+@export var player_boss: PackedScene
 
 @export var boss_particle: PackedScene
 @export var boss_death_sfx: AudioStream
@@ -34,6 +36,7 @@ var current_wave: int = 0
 var total_enemies: int
 
 func _ready():
+	dead_layer.hide()
 	limpo.hide()
 	ui.update_progress(0)
 	SoundController.change_bmg("game", game_bmg)
@@ -68,6 +71,12 @@ func _process(_delta):
 		ui.update_seconday(p.secondary_cooldown)
 	else:
 		ui.update_seconday(0)
+	
+	if Global.player is PlayerController:
+		var p = Global.player as PlayerController
+		if p.time_dead > 1 and dead_layer.visible == false:
+			dead_layer.show()
+			AudioServer.set_bus_effect_enabled(0, 1, true)
 
 func next_wave():
 	print("Current Wave: " + str(current_wave))
@@ -108,7 +117,7 @@ func on_wave_clear():
 	
 	if current_wave == 4:
 		ui.wave_progress.hide()
-		if Global.current_stage % 3 != 0:
+		if Global.current_stage % 2 != 0:
 			end_stage()
 			return
 		
@@ -154,8 +163,14 @@ func add_boss():
 	
 	var scene = slime_boss
 	
-	if (Global.current_stage / 3) % 2 == 0:
-		scene = projectile_boss
+	var boss_index = (((Global.current_stage-1) / 2) * 2) % 3
+	match boss_index:
+		0:
+			scene = slime_boss
+		1:
+			scene = player_boss
+		2:
+			scene = projectile_boss
 	
 	var boss = scene.instantiate()
 	add_child(boss)
@@ -199,7 +214,7 @@ func end_stage():
 		add_child(chest)
 		chest.global_position = chest_spawn.global_position
 	)
-	if (Global.current_stage-1) % 3 != 0:
+	if (Global.current_stage-1) % 2 != 0:
 		tween.tween_interval(0.5)
 		tween.tween_callback(func():
 			var health = pickup_scene.instantiate()

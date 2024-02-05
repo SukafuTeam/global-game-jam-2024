@@ -1,8 +1,13 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://dasf0b7ihc67r"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://dasf0b7ihc67r"]
 
 [sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_po2nv"]
 resource_name = "HighPassFilter"
 
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_a7lcu"]
+resource_name = "LowPassFilter"
+
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectHighPassFilter_po2nv")
 bus/0/effect/0/enabled = false
+bus/0/effect/1/effect = SubResource("AudioEffectLowPassFilter_a7lcu")
+bus/0/effect/1/enabled = false

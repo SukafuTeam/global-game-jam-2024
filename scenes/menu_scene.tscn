@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d14ld8dahhxbn"]
+[gd_scene load_steps=14 format=3 uid="uid://d14ld8dahhxbn"]
 
 [ext_resource type="Script" path="res://scripts/scenes/menu_scene.gd" id="1_csg24"]
 [ext_resource type="AudioStream" uid="uid://b5sxbbqkq2msf" path="res://sounds/bmg/menu_music.ogg" id="2_lcn8u"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cp7gvdk8ui35w" path="res://images/ui/menu/sukafuTeam.png" id="9_8egsl"]
 [ext_resource type="Texture2D" uid="uid://bhjcjptchrsv2" path="res://images/ui/UIgame/Molduras/teclaZ.png" id="10_186ei"]
 [ext_resource type="Texture2D" uid="uid://tphad3epkv8u" path="res://images/ui/UIgame/Molduras/consoleBaixo.png" id="11_8dbba"]
+[ext_resource type="Script" path="res://scripts/ui/input_texture.gd" id="12_brd6w"]
 
 [node name="MenuScene" type="CanvasLayer"]
 script = ExtResource("1_csg24")
@@ -141,22 +142,14 @@ stretch_mode = 5
 
 [node name="PlayGamepad" type="TextureRect" parent="background"]
 layout_mode = 0
-offset_left = 766.0
-offset_top = 765.0
-offset_right = 845.0
-offset_bottom = 841.0
+offset_left = 869.0
+offset_top = 763.0
+offset_right = 948.0
+offset_bottom = 839.0
 rotation = -0.0154582
 scale = Vector2(2.3965, 2.3965)
 texture = ExtResource("10_186ei")
 stretch_mode = 5
-
-[node name="PlayGamepad2" type="TextureRect" parent="background"]
-layout_mode = 0
-offset_left = 975.0
-offset_top = 773.0
-offset_right = 1054.0
-offset_bottom = 849.0
-rotation = -0.0154582
-scale = Vector2(2.25784, 2.25784)
-texture = ExtResource("11_8dbba")
-stretch_mode = 5
+script = ExtResource("12_brd6w")
+keyboard_texture = ExtResource("10_186ei")
+gamepad_texture = ExtResource("11_8dbba")

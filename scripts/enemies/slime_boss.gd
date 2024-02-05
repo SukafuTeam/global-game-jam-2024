@@ -8,13 +8,14 @@ enum State { MOVE, PREP, DASH }
 @onready var body: Sprite2D = $BodyContainer/Body
 @onready var eye_center = $BodyContainer/EyeCenter
 @onready var mouth: Sprite2D = $BodyContainer/Body/Mouth
+@onready var health_boss: HealthBoss = $HealthBoss
 
 
 @export var move_speed_range: Vector2 = Vector2(30, 100)
 var move_speed: float:
 	get:
 		var health_percent = inverse_lerp(0, initial_health, health)
-		return lerp(move_speed_range.x, move_speed_range.y, health_percent)
+		return lerp(move_speed_range.y, move_speed_range.x, health_percent)
 
 @export var move_accel: float = 10.0
 
@@ -48,6 +49,7 @@ var state: State:
 func _ready():
 	initial_health = health
 	current_slime_spawn_cooldown = spawn_slime_range.x
+	health_boss.setup(health)
 	
 	body.material.set_shader_parameter("color", Color(0.77, 0.65, 0.09))
 	flash_intensity = 1.0
@@ -107,6 +109,7 @@ func take_damage(damage: int, _attacker_position: Vector2):
 	current_damage_cooldown = damage_cooldown
 	
 	health -= damage
+	health_boss.update_health(health)
 	
 	SoundController.play_sfx(damage_sound, randf_range(0.9, 1.1), randf_range(0.9, 1.1))
 	

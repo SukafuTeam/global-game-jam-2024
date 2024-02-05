@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ciu4n5mm4yalf"]
+[gd_scene load_steps=32 format=3 uid="uid://ciu4n5mm4yalf"]
 
 [ext_resource type="Script" path="res://scripts/scenes/arena_scene.gd" id="1_pcskl"]
 [ext_resource type="Texture2D" uid="uid://dp8vxtp38jmwt" path="res://images/sprites/scenario/fundo.png" id="1_r57dj"]
@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://bebayrx7sxxvb" path="res://entities/enemies/projectile_boss.tscn" id="20_74pcy"]
 [ext_resource type="PackedScene" uid="uid://boa65p2wugi8p" path="res://entities/ui/pause_layer.tscn" id="24_53pa0"]
 [ext_resource type="PackedScene" uid="uid://dh05dtof2so66" path="res://entities/health_pickup.tscn" id="25_q5cmu"]
+[ext_resource type="PackedScene" uid="uid://cuvffoq4tpsq5" path="res://entities/enemies/evil_player.tscn" id="27_nx52d"]
+[ext_resource type="PackedScene" uid="uid://b7cvkwupjxdmj" path="res://entities/ui/dead_layer.tscn" id="28_fxfj6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtaio"]
 size = Vector2(84, 1468)
@@ -50,6 +52,7 @@ boss_bmg = ExtResource("7_kqgr2")
 victory_bmg = ExtResource("8_4s71f")
 slime_boss = ExtResource("15_kw4t1")
 projectile_boss = ExtResource("20_74pcy")
+player_boss = ExtResource("27_nx52d")
 boss_particle = ExtResource("7_exe7a")
 boss_death_sfx = ExtResource("12_rp8kh")
 
@@ -290,3 +293,9 @@ position = Vector2(885, 540)
 position = Vector2(940, 346)
 
 [node name="PauseLayer" parent="." instance=ExtResource("24_53pa0")]
+
+[node name="DeadLayer" parent="." instance=ExtResource("28_fxfj6")]
+visible = false
+
+[node name="ArenaCenter" type="Marker2D" parent="."]
+position = Vector2(960, 660)

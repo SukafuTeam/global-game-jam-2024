@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bebayrx7sxxvb"]
+[gd_scene load_steps=19 format=3 uid="uid://bebayrx7sxxvb"]
 
 [ext_resource type="Shader" path="res://shaders/flash_color.gdshader" id="1_f71kh"]
 [ext_resource type="Texture2D" uid="uid://rhkr6dpavkkt" path="res://images/sprites/enemies/projectile boss/Referência_.png" id="1_tgvxc"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bgobycfqip6tk" path="res://images/sprites/enemies/projectile boss/__0001_olhos.png" id="7_n7m86"]
 [ext_resource type="Texture2D" uid="uid://x0j7d2rq5u1o" path="res://images/sprites/enemies/projectile boss/__0000_dano.png" id="10_0smjc"]
 [ext_resource type="Texture2D" uid="uid://doprxr0foti3h" path="res://images/sprites/global/shadow.png" id="14_pjibj"]
+[ext_resource type="PackedScene" uid="uid://by2o1gkwxgkw1" path="res://entities/ui/health_boss.tscn" id="15_ab1x2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6okyo"]
 shader = ExtResource("1_f71kh")
@@ -24,7 +25,7 @@ shader_parameter/flash_intensity = 0.0
 radius = 20.0998
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jwafu"]
-radius = 190.379
+radius = 189.691
 
 [node name="ProjectileBoss" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_6okyo")
@@ -35,7 +36,7 @@ move_accel = 20.0
 fly_amplitude = 50.0
 shoot_distance = 400.0
 projectile = ExtResource("3_qbb3s")
-health = 50
+health = 80
 
 [node name="Referência" type="Sprite2D" parent="."]
 visible = false
@@ -113,10 +114,13 @@ texture = ExtResource("14_pjibj")
 shape = SubResource("CircleShape2D_4wb04")
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(0, -177)
+position = Vector2(0, -100)
+scale = Vector2(1, 0.679999)
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_jwafu")
 debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="HealthBoss" parent="." instance=ExtResource("15_ab1x2")]
