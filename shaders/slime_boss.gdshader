@@ -19,7 +19,7 @@ void fragment() {
 
     // Output the texture with the modified UVs
     COLOR = texture(TEXTURE, newUV);
-	
+
 	vec4 pixelColor = texture(TEXTURE, newUV);
 	COLOR.rgb = mix(pixelColor.rgb, color, flash_intensity);
 }
